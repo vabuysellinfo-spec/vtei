@@ -365,6 +365,9 @@
                             <div class="overlay-logo">&#x412;&#x422;&#x415;&#x406;</div>
                             <h2>&#x422;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F; &#x43D;&#x435;&#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F;&#x43D;&#x435;</h2>
                             <p>${data.message || '&#x412;&#x438;&#x43A;&#x43B;&#x430;&#x434;&#x430;&#x447; &#x442;&#x438;&#x43C;&#x447;&#x430;&#x441;&#x43E;&#x432;&#x43E; &#x437;&#x430;&#x43A;&#x440;&#x438;&#x432; &#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F; &#x434;&#x43E; &#x442;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F;.'}</p>
+                            <div style="margin-top: 24px;">
+                                <a href="../index.html" style="color: #1a4b8a; text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 16px; background: rgba(26,75,138,0.05); border-radius: 8px;">← Повернутись на головну</a>
+                            </div>
                         </div>`;
                 } else {
                     showCodeForm();
@@ -380,7 +383,10 @@
             '<p>Отримайте код у вашого викладача перед початком тестування.</p>',
             '<input type="text" id="codeInput" class="overlay-input" placeholder="&#x2022; &#x2022; &#x2022; &#x2022; &#x2022; &#x2022;" maxlength="12" autocomplete="off" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key===\'Enter\') submitCode()">',
             '<button class="overlay-btn" id="codeBtn" onclick="submitCode()">Розпочати тест →</button>',
-            '<div class="overlay-error" id="codeError"></div>'
+            '<div class="overlay-error" id="codeError"></div>',
+            '<div style="margin-top: 16px;">',
+            '    <a href="../index.html" style="color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">← Повернутись на головну</a>',
+            '</div>'
         ].join('');
         setTimeout(function() {
             var inp = document.getElementById('codeInput');
