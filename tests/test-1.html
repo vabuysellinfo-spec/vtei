@@ -153,20 +153,30 @@
             font-size: 15px;
             line-height: 1.6;
         }
+        /* Стилі для форми тесту */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; margin: 0; padding: 0; }
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .glass-panel { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .test-page-header h1 { text-align: center; color: #2c3e50; font-size: 24px; margin-bottom: 5px; }
+        .test-page-header h2 { text-align: center; color: #2c3e50; font-size: 18px; font-weight: normal; margin-top: 0; margin-bottom: 30px; }
+        .student-info { display: flex; justify-content: space-between; margin-bottom: 30px; gap: 20px; }
+        .student-info div { flex: 1; }
+        .student-info input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
+        .question { background: #fafafa; border-left: 4px solid #3498db; padding: 15px 20px; margin-bottom: 20px; border-radius: 4px; }
+        .question p { font-weight: bold; margin-top: 0; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .options input[type="radio"] { margin-right: 10px; }
+        #submitBtn { display: block; width: 100%; padding: 15px; background: #3498db; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; margin-top: 20px;}
+        #submitBtn:hover:not(:disabled) { background: #2980b9; }
+        #submitBtn:disabled { background: #95a5a6; cursor: not-allowed; }
+        #result { margin-top: 30px; padding: 20px; background: #e8f8f5; border: 1px solid #1abc9c; border-radius: 4px; text-align: center; font-size: 20px; font-weight: bold; display: none; }
+        #sendStatus { text-align: center; margin-top: 15px; font-weight: bold; }
+        .status-sending { color: #f39c12; }
+        .status-ok { color: #27ae60; }
+        .status-error { color: #e74c3c; }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="header-content">
-        <a href="../index.html" class="header-logo">
-            <span>ВТЕІ</span> Онлайн-тестування
-        </a>
-        <nav class="header-nav">
-            <a href="../index.html">← Назад до всіх тестів</a>
-        </nav>
-    </div>
-</header>
 
 <!-- OVERLAY: перевірка коду доступу -->
 <div id="overlay">
@@ -184,7 +194,7 @@
 <div class="glass-panel">
     <div class="test-page-header">
         <h1>ТЕСТОВІ ЗАВДАННЯ</h1>
-        <h2>з дисципліни «Українська мова за професійним спрямуванням»<br>Тема: Функціональні стилі мовлення. Офіційно-діловий стиль</h2>
+        <h2>з дисципліни «Українська мова за професійним спрямуванням»<br>Тема: Функціональні стилі мовлення</h2>
     </div>
 
     <div class="student-info">
@@ -212,7 +222,7 @@
 
         <!-- Запитання 2 -->
         <div class="question">
-            <p>2. Який стиль мовлення характеризується наявністю термінів, складних синтаксичних конструкцій, об'єктивністю та повною відсутністю емоційного забарвлення?</p>
+            <p>2. Який стиль мовлення характеризується наявністю термінів, логічністю, об’єктивністю та повною відсутністю емоційного забарвлення?</p>
             <div class="options">
                 <label><input type="radio" name="q2" value="А"> А) Публіцистичний</label>
                 <label><input type="radio" name="q2" value="Б"> Б) Офіційно-діловий</label>
@@ -234,243 +244,243 @@
 
         <!-- Запитання 4 -->
         <div class="question">
-            <p>4. Виберіть правильний варіант слововживання, характерний для ділового мовлення:</p>
+            <p>4. Прочитайте уривок: «Експерти шоковані! Ціни на ринку нерухомості знову злетіли до небес. Чи зможуть молоді сім'ї дозволити собі власне житло цього року?». До якого стилю він належить?</p>
             <div class="options">
-                <label><input type="radio" name="q4" value="А"> А) Приймати участь у конференції</label>
-                <label><input type="radio" name="q4" value="Б"> Б) Брати участь у конференції</label>
-                <label><input type="radio" name="q4" value="В"> В) Принімати участь в конференції</label>
-                <label><input type="radio" name="q4" value="Г"> Г) Займатися участю у конференції</label>
+                <label><input type="radio" name="q4" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q4" value="Б"> Б) Офіційно-діловий</label>
+                <label><input type="radio" name="q4" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q4" value="Г"> Г) Художній</label>
             </div>
         </div>
 
         <!-- Запитання 5 -->
         <div class="question">
-            <p>5. Що з наведеного є обов'язковою ознакою офіційно-ділового стилю?</p>
+            <p>5. Прочитайте уривок: «Двері прочинилися, і до кімнати влетів холодний вітер, змішаний із запахом осіннього листя. Серце Максима тривожно стиснулося». До якого стилю він належить?</p>
             <div class="options">
-                <label><input type="radio" name="q5" value="А"> А) Використання авторських неологізмів та метафор.</label>
-                <label><input type="radio" name="q5" value="Б"> Б) Стандартизація мови, використання сталих словосполучень (канцеляризмів, штампів).</label>
-                <label><input type="radio" name="q5" value="В"> В) Використання просторічної та емоційно-експресивної лексики.</label>
-                <label><input type="radio" name="q5" value="Г"> Г) Прихований підтекст та багатозначність слів.</label>
+                <label><input type="radio" name="q5" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q5" value="Б"> Б) Публіцистичний</label>
+                <label><input type="radio" name="q5" value="В"> В) Розмовний</label>
+                <label><input type="radio" name="q5" value="Г"> Г) Художній</label>
             </div>
         </div>
 
         <!-- Запитання 6 -->
         <div class="question">
-            <p>6. Виберіть граматично правильну конструкцію для ділового документа:</p>
+            <p>6. Прочитайте уривок: «Гей, ти! Ану йди сюди, справа є! Кажу ж тобі, не чіпай того кабеля, бо коротне!». Який стиль тут використано?</p>
             <div class="options">
-                <label><input type="radio" name="q6" value="А"> А) Згідно наказу директора</label>
-                <label><input type="radio" name="q6" value="Б"> Б) Відповідно до наказу директора</label>
-                <label><input type="radio" name="q6" value="В"> В) У відповідності з наказом директора</label>
-                <label><input type="radio" name="q6" value="Г"> Г) Згідно до наказу директора</label>
+                <label><input type="radio" name="q6" value="А"> А) Художній</label>
+                <label><input type="radio" name="q6" value="Б"> Б) Розмовний</label>
+                <label><input type="radio" name="q6" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q6" value="Г"> Г) Офіційно-діловий</label>
             </div>
         </div>
 
         <!-- Запитання 7 -->
         <div class="question">
-            <p>7. Укажіть рядок, у якому всі слова є типовими для офіційно-ділового стилю (канцеляризмами):</p>
+            <p>7. Текст: «Договір оренди приміщення укладається строком на один рік. Орендна плата вноситься Орендарем щомісяця...» є типовим прикладом:</p>
             <div class="options">
-                <label><input type="radio" name="q7" value="А"> А) Вищезазначений, клопотання, чинний, ухвалити.</label>
-                <label><input type="radio" name="q7" value="Б"> Б) Крутий, інвестиції, мегапроєкт, тусовка.</label>
-                <label><input type="radio" name="q7" value="В"> В) Лебідонька, сонечко, працювати, відпочивати.</label>
-                <label><input type="radio" name="q7" value="Г"> Г) Квант, гіпотеза, інтеграл, синтаксис.</label>
+                <label><input type="radio" name="q7" value="А"> А) Наукового стилю</label>
+                <label><input type="radio" name="q7" value="Б"> Б) Публіцистичного стилю</label>
+                <label><input type="radio" name="q7" value="В"> В) Офіційно-ділового стилю</label>
+                <label><input type="radio" name="q7" value="Г"> Г) Розмовного стилю</label>
             </div>
         </div>
 
         <!-- Запитання 8 -->
         <div class="question">
-            <p>8. Прочитайте уривок: «Експерти шоковані! Ціни на ринку нерухомості знову злетіли до небес. Чи зможуть молоді сім'ї дозволити собі власне житло цього року?». До якого стилю він належить?</p>
+            <p>8. Що з наведеного є обов'язковою ознакою офіційно-ділового стилю?</p>
             <div class="options">
-                <label><input type="radio" name="q8" value="А"> А) Науковий</label>
-                <label><input type="radio" name="q8" value="Б"> Б) Офіційно-діловий</label>
-                <label><input type="radio" name="q8" value="В"> В) Публіцистичний</label>
-                <label><input type="radio" name="q8" value="Г"> Г) Художній</label>
+                <label><input type="radio" name="q8" value="А"> А) Використання авторських неологізмів та метафор.</label>
+                <label><input type="radio" name="q8" value="Б"> Б) Стандартизація мови, використання сталих словосполучень (канцеляризмів).</label>
+                <label><input type="radio" name="q8" value="В"> В) Використання просторічної та емоційно-експресивної лексики.</label>
+                <label><input type="radio" name="q8" value="Г"> Г) Прихований підтекст та багатозначність слів.</label>
             </div>
         </div>
 
         <!-- Запитання 9 -->
         <div class="question">
-            <p>9. Знайдіть правильний відповідник до російського вислову «действующий закон»:</p>
+            <p>9. Який стиль мовлення використовується в повсякденному спілкуванні, побуті та характеризується емоційністю, використанням просторічних слів і неповних речень?</p>
             <div class="options">
-                <label><input type="radio" name="q9" value="А"> А) Діючий закон</label>
-                <label><input type="radio" name="q9" value="Б"> Б) Чинний закон</label>
-                <label><input type="radio" name="q9" value="В"> В) Працюючий закон</label>
-                <label><input type="radio" name="q9" value="Г"> Г) Актуальний закон</label>
+                <label><input type="radio" name="q9" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q9" value="Б"> Б) Розмовний</label>
+                <label><input type="radio" name="q9" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q9" value="Г"> Г) Офіційно-діловий</label>
             </div>
         </div>
 
         <!-- Запитання 10 -->
         <div class="question">
-            <p>10. Елемент документа (назва, дата, підпис, текст, адресат), що забезпечує його юридичну силу, називається:</p>
+            <p>10. Основна мета якого стилю — вплив на читача чи слухача, формування громадської думки, заклик до дії?</p>
             <div class="options">
-                <label><input type="radio" name="q10" value="А"> А) Штамп</label>
-                <label><input type="radio" name="q10" value="Б"> Б) Бланк</label>
-                <label><input type="radio" name="q10" value="В"> В) Реквізит</label>
-                <label><input type="radio" name="q10" value="Г"> Г) Формуляр</label>
+                <label><input type="radio" name="q10" value="А"> А) Публіцистичний</label>
+                <label><input type="radio" name="q10" value="Б"> Б) Науковий</label>
+                <label><input type="radio" name="q10" value="В"> В) Офіційно-діловий</label>
+                <label><input type="radio" name="q10" value="Г"> Г) Художній</label>
             </div>
         </div>
 
         <!-- Запитання 11 -->
         <div class="question">
-            <p>11. Який жанр (вид документа) НЕ належить до офіційно-ділового стилю?</p>
+            <p>11. Для якого стилю найхарактернішим є використання метафор, епітетів, порівнянь та інших засобів художньої виразності?</p>
             <div class="options">
-                <label><input type="radio" name="q11" value="А"> А) Резюме</label>
-                <label><input type="radio" name="q11" value="Б"> Б) Доповідна записка</label>
-                <label><input type="radio" name="q11" value="В"> В) Нарис</label>
-                <label><input type="radio" name="q11" value="Г"> Г) Трудовий договір</label>
+                <label><input type="radio" name="q11" value="А"> А) Офіційно-діловий</label>
+                <label><input type="radio" name="q11" value="Б"> Б) Публіцистичний</label>
+                <label><input type="radio" name="q11" value="В"> В) Художній</label>
+                <label><input type="radio" name="q11" value="Г"> Г) Розмовний</label>
             </div>
         </div>
 
         <!-- Запитання 12 -->
         <div class="question">
-            <p>12. Як правильно перекласти українською мовою словосполучення «проводить мероприятия»?</p>
+            <p>12. Який стиль характеризується широким використанням невербальних засобів спілкування (жестів, міміки) та інтонації?</p>
             <div class="options">
-                <label><input type="radio" name="q12" value="А"> А) Проводити міроприємства</label>
-                <label><input type="radio" name="q12" value="Б"> Б) Робити міроприємства</label>
-                <label><input type="radio" name="q12" value="В"> В) Проводити заходи</label>
-                <label><input type="radio" name="q12" value="Г"> Г) Влаштовувати заходи</label>
+                <label><input type="radio" name="q12" value="А"> А) Розмовний</label>
+                <label><input type="radio" name="q12" value="Б"> Б) Науковий</label>
+                <label><input type="radio" name="q12" value="В"> В) Художній</label>
+                <label><input type="radio" name="q12" value="Г"> Г) Офіційно-діловий</label>
             </div>
         </div>
 
         <!-- Запитання 13 -->
         <div class="question">
-            <p>13. Як правильно оформити дату в офіційно-діловому документі (стандартний буквено-цифровий спосіб)?</p>
+            <p>13. До якого підстилю офіційно-ділового стилю належать закони, укази, постанови та статути?</p>
             <div class="options">
-                <label><input type="radio" name="q13" value="А"> А) 5-те жовтня 23 р.</label>
-                <label><input type="radio" name="q13" value="Б"> Б) 05 жовтня 2023 року</label>
-                <label><input type="radio" name="q13" value="В"> В) п'ятого жовтня 2023</label>
-                <label><input type="radio" name="q13" value="Г"> Г) 5.10.23</label>
+                <label><input type="radio" name="q13" value="А"> А) Дипломатичного</label>
+                <label><input type="radio" name="q13" value="Б"> Б) Адміністративно-канцелярського</label>
+                <label><input type="radio" name="q13" value="В"> В) Законодавчого</label>
+                <label><input type="radio" name="q13" value="Г"> Г) Юридичного</label>
             </div>
         </div>
 
         <!-- Запитання 14 -->
         <div class="question">
-            <p>14. Укажіть правильний варіант слововживання, що не містить тавтології (зайвого повторення):</p>
+            <p>14. Який із цих підстилів належить до наукового стилю?</p>
             <div class="options">
-                <label><input type="radio" name="q14" value="А"> А) У травні місяці</label>
-                <label><input type="radio" name="q14" value="Б"> Б) Моя власна думка</label>
-                <label><input type="radio" name="q14" value="В"> В) Вільна вакансія</label>
-                <label><input type="radio" name="q14" value="Г"> Г) Порушити питання</label>
+                <label><input type="radio" name="q14" value="А"> А) Законодавчий</label>
+                <label><input type="radio" name="q14" value="Б"> Б) Науково-популярний</label>
+                <label><input type="radio" name="q14" value="В"> В) Адміністративний</label>
+                <label><input type="radio" name="q14" value="Г"> Г) Есеїстичний</label>
             </div>
         </div>
 
         <!-- Запитання 15 -->
         <div class="question">
-            <p>15. Який документ містить опис життя і діяльності людини, складений нею самостійно в хронологічному порядку?</p>
+            <p>15. До якого стилю належать такі жанри: дисертація, монографія, реферат, стаття?</p>
             <div class="options">
-                <label><input type="radio" name="q15" value="А"> А) Резюме</label>
-                <label><input type="radio" name="q15" value="Б"> Б) Характеристика</label>
-                <label><input type="radio" name="q15" value="В"> В) Автобіографія</label>
-                <label><input type="radio" name="q15" value="Г"> Г) Заява</label>
+                <label><input type="radio" name="q15" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q15" value="Б"> Б) Офіційно-діловий</label>
+                <label><input type="radio" name="q15" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q15" value="Г"> Г) Художній</label>
             </div>
         </div>
 
         <!-- Запитання 16 -->
         <div class="question">
-            <p>16. Словосполучення «особова справа» вживається, коли йдеться про:</p>
+            <p>16. Який жанр (вид тексту) НЕ належить до офіційно-ділового стилю?</p>
             <div class="options">
-                <label><input type="radio" name="q16" value="А"> А) Сукупність документів працівника або студента, що зберігаються в архіві чи відділі кадрів.</label>
-                <label><input type="radio" name="q16" value="Б"> Б) Власні інтереси та переконання людини.</label>
-                <label><input type="radio" name="q16" value="В"> В) Приватне майно громадянина.</label>
-                <label><input type="radio" name="q16" value="Г"> Г) Судовий процес щодо конкретної особи.</label>
+                <label><input type="radio" name="q16" value="А"> А) Резюме</label>
+                <label><input type="radio" name="q16" value="Б"> Б) Доповідна записка</label>
+                <label><input type="radio" name="q16" value="В"> В) Нарис</label>
+                <label><input type="radio" name="q16" value="Г"> Г) Трудовий договір</label>
             </div>
         </div>
 
         <!-- Запитання 17 -->
         <div class="question">
-            <p>17. Яка форма присудка є найбільш характерною для офіційно-ділового стилю?</p>
+            <p>17. Яка ознака є СПІЛЬНОЮ для наукового та офіційно-ділового стилів?</p>
             <div class="options">
-                <label><input type="radio" name="q17" value="А"> А) Емоційно-забарвлена (зробили чудово).</label>
-                <label><input type="radio" name="q17" value="Б"> Б) Безособова або дієприкметникова (наказ підписано, рішення ухвалено).</label>
-                <label><input type="radio" name="q17" value="В"> В) Дієслова у формі наказового способу 2-ї особи (підпишіть, зробіть).</label>
-                <label><input type="radio" name="q17" value="Г"> Г) Складена іменна з оцінними прикметниками (завдання є неймовірним).</label>
+                <label><input type="radio" name="q17" value="А"> А) Емоційність та образність</label>
+                <label><input type="radio" name="q17" value="Б"> Б) Точність, логічність, відсутність двозначності</label>
+                <label><input type="radio" name="q17" value="В"> В) Використання діалектизмів та жаргонізмів</label>
+                <label><input type="radio" name="q17" value="Г"> Г) Наявність розгорнутих діалогів</label>
             </div>
         </div>
 
         <!-- Запитання 18 -->
         <div class="question">
-            <p>18. Укажіть правильний варіант перекладу українською мовою вислову «вступать в силу»:</p>
+            <p>18. У якому стилі неприпустиме вживання слів у переносному значенні та емоційно забарвленої лексики?</p>
             <div class="options">
-                <label><input type="radio" name="q18" value="А"> А) Вступати в силу</label>
-                <label><input type="radio" name="q18" value="Б"> Б) Набувати чинності</label>
-                <label><input type="radio" name="q18" value="В"> В) Набирати силу</label>
-                <label><input type="radio" name="q18" value="Г"> Г) Ставати діючим</label>
+                <label><input type="radio" name="q18" value="А"> А) Публіцистичний</label>
+                <label><input type="radio" name="q18" value="Б"> Б) Художній</label>
+                <label><input type="radio" name="q18" value="В"> В) Офіційно-діловий</label>
+                <label><input type="radio" name="q18" value="Г"> Г) Розмовний</label>
             </div>
         </div>
 
         <!-- Запитання 19 -->
         <div class="question">
-            <p>19. Знайдіть граматичну помилку в оформленні звертання для ділового листа:</p>
+            <p>19. Яка форма присудка є найбільш характерною для офіційно-ділового стилю?</p>
             <div class="options">
-                <label><input type="radio" name="q19" value="А"> А) Шановний пане директоре!</label>
-                <label><input type="radio" name="q19" value="Б"> Б) Вельмишановний Іване Петровичу!</label>
-                <label><input type="radio" name="q19" value="В"> В) Шановна пані Олено!</label>
-                <label><input type="radio" name="q19" value="Г"> Г) Шановний пан Василь!</label>
+                <label><input type="radio" name="q19" value="А"> А) Емоційно-забарвлена (зробили чудово).</label>
+                <label><input type="radio" name="q19" value="Б"> Б) Безособова або дієприкметникова (наказ підписано, рішення ухвалено).</label>
+                <label><input type="radio" name="q19" value="В"> В) Дієслова у формі наказового способу 2-ї особи (підпишіть, зробіть).</label>
+                <label><input type="radio" name="q19" value="Г"> Г) Складена іменна з оцінними прикметниками (завдання є неймовірним).</label>
             </div>
         </div>
 
         <!-- Запитання 20 -->
         <div class="question">
-            <p>20. Який із наведених документів за призначенням належить до розпорядчих?</p>
+            <p>20. Що є основною формою викладу тексту в науковому стилі?</p>
             <div class="options">
-                <label><input type="radio" name="q20" value="А"> А) Довідка</label>
-                <label><input type="radio" name="q20" value="Б"> Б) Наказ</label>
-                <label><input type="radio" name="q20" value="В"> В) Звіт</label>
-                <label><input type="radio" name="q20" value="Г"> Г) Акт</label>
+                <label><input type="radio" name="q20" value="А"> А) Монолог</label>
+                <label><input type="radio" name="q20" value="Б"> Б) Діалог</label>
+                <label><input type="radio" name="q20" value="В"> В) Полілог</label>
+                <label><input type="radio" name="q20" value="Г"> Г) Інтерв'ю</label>
             </div>
         </div>
 
         <!-- Запитання 21 -->
         <div class="question">
-            <p>21. Як правильно поєднувати прийменник «відповідно» у діловому мовленні?</p>
+            <p>21. Укажіть рядок, у якому всі слова є типовими для офіційно-ділового стилю (канцеляризмами):</p>
             <div class="options">
-                <label><input type="radio" name="q21" value="А"> А) Відповідно з наказом</label>
-                <label><input type="radio" name="q21" value="Б"> Б) Відповідно до наказу</label>
-                <label><input type="radio" name="q21" value="В"> В) У відповідності до наказу</label>
-                <label><input type="radio" name="q21" value="Г"> Г) Відповідно наказу</label>
+                <label><input type="radio" name="q21" value="А"> А) Вищезазначений, клопотання, чинний, ухвалити.</label>
+                <label><input type="radio" name="q21" value="Б"> Б) Крутий, інвестиції, мегапроєкт, тусовка.</label>
+                <label><input type="radio" name="q21" value="В"> В) Лебідонька, сонечко, працювати, відпочивати.</label>
+                <label><input type="radio" name="q21" value="Г"> Г) Квант, гіпотеза, інтеграл, синтаксис.</label>
             </div>
         </div>
 
         <!-- Запитання 22 -->
         <div class="question">
-            <p>22. До якого підстилю офіційно-ділового стилю належать закони, укази, постанови та статути?</p>
+            <p>22. Виберіть правильний варіант слововживання, характерний для ділового та наукового стилів:</p>
             <div class="options">
-                <label><input type="radio" name="q22" value="А"> А) Дипломатичного</label>
-                <label><input type="radio" name="q22" value="Б"> Б) Адміністративно-канцелярського</label>
-                <label><input type="radio" name="q22" value="В"> В) Законодавчого</label>
-                <label><input type="radio" name="q22" value="Г"> Г) Юридичного</label>
+                <label><input type="radio" name="q22" value="А"> А) Приймати участь у конференції</label>
+                <label><input type="radio" name="q22" value="Б"> Б) Брати участь у конференції</label>
+                <label><input type="radio" name="q22" value="В"> В) Принімати участь в конференції</label>
+                <label><input type="radio" name="q22" value="Г"> Г) Займатися участю у конференції</label>
             </div>
         </div>
 
         <!-- Запитання 23 -->
         <div class="question">
-            <p>23. Виберіть рядок, у якому всі слова написані без помилок і відповідають нормам ділового стилю:</p>
+            <p>23. Виберіть єдино правильний варіант слововживання для протоколів та довідок:</p>
             <div class="options">
-                <label><input type="radio" name="q23" value="А"> А) Будь-ласка, на-жаль, по батькові</label>
-                <label><input type="radio" name="q23" value="Б"> Б) Будь ласка, на жаль, по батькові</label>
-                <label><input type="radio" name="q23" value="В"> В) Будь ласка, нажаль, по-батькові</label>
-                <label><input type="radio" name="q23" value="Г"> Г) Будь-ласка, на жаль, побатькові</label>
+                <label><input type="radio" name="q23" value="А"> А) Виписка із протоколу</label>
+                <label><input type="radio" name="q23" value="Б"> Б) Витяг із протоколу</label>
+                <label><input type="radio" name="q23" value="В"> В) Відривок із протоколу</label>
+                <label><input type="radio" name="q23" value="Г"> Г) Уривок із протоколу</label>
             </div>
         </div>
 
         <!-- Запитання 24 -->
         <div class="question">
-            <p>24. Текст: «Договір оренди приміщення укладається строком на один рік. Орендна плата вноситься Орендарем щомісяця...» є типовим прикладом:</p>
+            <p>24. Як правильно поєднувати прийменник «відповідно» у діловому мовленні?</p>
             <div class="options">
-                <label><input type="radio" name="q24" value="А"> А) Наукового стилю</label>
-                <label><input type="radio" name="q24" value="Б"> Б) Публіцистичного стилю</label>
-                <label><input type="radio" name="q24" value="В"> В) Офіційно-ділового стилю</label>
-                <label><input type="radio" name="q24" value="Г"> Г) Розмовного стилю</label>
+                <label><input type="radio" name="q24" value="А"> А) Відповідно з наказом</label>
+                <label><input type="radio" name="q24" value="Б"> Б) Відповідно до наказу</label>
+                <label><input type="radio" name="q24" value="В"> В) У відповідності до наказу</label>
+                <label><input type="radio" name="q24" value="Г"> Г) Відповідно наказу</label>
             </div>
         </div>
 
         <!-- Запитання 25 -->
         <div class="question">
-            <p>25. Виберіть єдино правильний варіант слововживання для протоколів та довідок:</p>
+            <p>25. Виберіть граматично правильну конструкцію для ділового документа:</p>
             <div class="options">
-                <label><input type="radio" name="q25" value="А"> А) Виписка із протоколу</label>
-                <label><input type="radio" name="q25" value="Б"> Б) Витяг із протоколу</label>
-                <label><input type="radio" name="q25" value="В"> В) Відривок із протоколу</label>
-                <label><input type="radio" name="q25" value="Г"> Г) Уривок із протоколу</label>
+                <label><input type="radio" name="q25" value="А"> А) Згідно з наказом директора</label>
+                <label><input type="radio" name="q25" value="Б"> Б) Згідно наказу директора</label>
+                <label><input type="radio" name="q25" value="В"> В) У відповідності з наказом директора</label>
+                <label><input type="radio" name="q25" value="Г"> Г) Згідно до наказу директора</label>
             </div>
         </div>
 
@@ -487,7 +497,7 @@
     // НАЛАШТУВАННЯ ТЕСТУ
     // =====================================================
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8eBPxfBN18vXv5rb8elcMQ6TJ82UNzk7Q19TTOSPHN5Kn8_c1TuKAqBLaUZ2Dm1dlyg/exec';
-    const TEST_THEME = 'Функціональні стилі мовлення. Офіційно-діловий стиль';
+    const TEST_THEME = 'Функціональні стилі мовлення';
     const TEST_ID = 'test-1';
 
     // Захист від копіювання
@@ -579,18 +589,18 @@
         setTimeout(function() { input.classList.remove('error'); }, 500);
     }
 
+    // Оновлені відповіді
     const correctAnswers = {
-        q1: "А", q2: "В", q3: "Б", q4: "Б",
-        q5: "Б", q6: "Б", q7: "А", q8: "В",
-        q9: "Б", q10: "В", q11: "В", q12: "В",
-        q13: "Б", q14: "Г", q15: "В", q16: "А",
-        q17: "Б", q18: "Б", q19: "Г", q20: "Б",
-        q21: "Б", q22: "В", q23: "Б", q24: "В",
-        q25: "Б"
+        q1: "А", q2: "В", q3: "Б", q4: "В",
+        q5: "Г", q6: "Б", q7: "В", q8: "Б",
+        q9: "Б", q10: "А", q11: "В", q12: "А",
+        q13: "В", q14: "Б", q15: "А", q16: "В",
+        q17: "Б", q18: "В", q19: "Б", q20: "А",
+        q21: "А", q22: "Б", q23: "Б", q24: "Б",
+        q25: "А"
     };
 
     let testSubmitted = false;
-
 
     function checkTest() {
         if (testSubmitted) return;
@@ -603,7 +613,7 @@
         // Збір відповідей студента у зручному форматі (1-А, 2-Б, і т.д.)
         const studentAnswersArray = [];
         for (let q of Object.keys(correctAnswers)) {
-            let num = q.replace('q', ''); // Прибираємо літеру 'q', залишаємо лише цифру
+            let num = q.replace('q', ''); 
             let ans = formData.get(q) || '—';
             studentAnswersArray.push(num + '-' + ans);
         }
@@ -611,15 +621,22 @@
 
         for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
             const userAnswer = formData.get(question);
+            const questionDiv = document.querySelector(`input[name="${question}"]`).closest('.question');
+            
+            questionDiv.style.borderLeftColor = '#3498db';
             
             if (userAnswer === correctAnswer) {
                 score++;
+                questionDiv.style.borderLeftColor = '#27ae60'; 
+            } else {
+                questionDiv.style.borderLeftColor = '#e74c3c'; 
             }
         }
 
         const name = document.getElementById('studentName').value || 'Студент';
         const group = document.getElementById('studentGroup').value || 'Група не вказана';
         const statusDiv = document.getElementById('sendStatus');
+        const resultDiv = document.getElementById('result');
         
         let gradeText = "";
         if (score >= 23) gradeText = "Відмінно!";
@@ -632,6 +649,13 @@
         const btn = document.getElementById('submitBtn');
         btn.disabled = true;
         btn.textContent = 'Тест завершено';
+
+        resultDiv.innerHTML = `
+            ${name} (${group})<br>
+            Ваш результат: ${score} з ${total} правильних відповідей.<br>
+            <span style="color: ${score >= 13 ? '#27ae60' : '#e74c3c'}">${gradeText}</span>
+        `;
+        resultDiv.style.display = 'block';
 
         // Відправка у Google Таблицю
         if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
