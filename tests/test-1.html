@@ -621,15 +621,9 @@
 
         for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
             const userAnswer = formData.get(question);
-            const questionDiv = document.querySelector(`input[name="${question}"]`).closest('.question');
-            
-            questionDiv.style.borderLeftColor = '#3498db';
             
             if (userAnswer === correctAnswer) {
                 score++;
-                questionDiv.style.borderLeftColor = '#27ae60'; 
-            } else {
-                questionDiv.style.borderLeftColor = '#e74c3c'; 
             }
         }
 
