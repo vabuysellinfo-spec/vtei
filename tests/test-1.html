@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест №1 | Функціональні стилі мовлення — ВТЕІ</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Overlay - екран завантаження та введення коду */
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0d2f5e 0%, #1a4b8a 40%, #1e7d37 100%);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        #overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .overlay-box {
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        }
+        .overlay-logo {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a017, #f1c40f);
+            color: #0d2f5e;
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .overlay-box h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0d2f5e;
+            margin-bottom: 8px;
+        }
+        .overlay-box p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .overlay-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(26,75,138,0.2);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 4px;
+            color: #1a4b8a;
+            background: rgba(26,75,138,0.04);
+            outline: none;
+            transition: all 0.25s;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+        .overlay-input:focus {
+            border-color: #1a4b8a;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26,75,138,0.12);
+        }
+        .overlay-input.error {
+            border-color: #dc3545;
+            background: rgba(220,53,69,0.04);
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,100%{transform:translateX(0)}
+            25%{transform:translateX(-8px)}
+            75%{transform:translateX(8px)}
+        }
+        .overlay-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a4b8a, #0d2f5e);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(26,75,138,0.35);
+            transition: all 0.3s;
+        }
+        .overlay-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(26,75,138,0.45);
+        }
+        .overlay-btn:disabled {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .overlay-error {
+            color: #dc3545;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            min-height: 20px;
+        }
+        .overlay-loading {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 16px;
+        }
+        /* Вимкнено викладачем */
+        .overlay-disabled {
+            text-align: center;
+        }
+        .overlay-disabled .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+        .overlay-disabled h2 {
+            color: #0d2f5e;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .overlay-disabled p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="../index.html" class="header-logo">
+            <span>ВТЕІ</span> Онлайн-тестування
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html">← Назад до всіх тестів</a>
+        </nav>
+    </div>
+</header>
+
+<!-- OVERLAY: перевірка коду доступу -->
+<div id="overlay">
+    <div class="overlay-box">
+        <div id="overlayContent">
+            <!-- Стан завантаження -->
+            <div class="overlay-logo">ВТЕІ</div>
+            <h2>Перевірка доступу...</h2>
+            <p class="overlay-loading">⏳ Перевіряємо статус тестування...</p>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+<div class="glass-panel">
+    <div class="test-page-header">
+        <h1>ТЕСТОВІ ЗАВДАННЯ</h1>
+        <h2>з дисципліни «Українська мова за професійним спрямуванням»<br>Тема: Функціональні стилі мовлення. Офіційно-діловий стиль</h2>
+    </div>
+
+    <div class="student-info">
+        <div>
+            <label for="studentName">ПІБ студента:</label>
+            <input type="text" id="studentName" placeholder="Введіть ваше прізвище та ім'я">
+        </div>
+        <div>
+            <label for="studentGroup">Група:</label>
+            <input type="text" id="studentGroup" placeholder="Введіть групу">
+        </div>
+    </div>
+
+    <form id="quizForm">
+        <!-- Запитання 1 -->
+        <div class="question">
+            <p>1. Яка основна функція офіційно-ділового стилю?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="А"> А) Регулювання офіційно-ділових стосунків, обслуговування сфери управління та адміністрування.</label>
+                <label><input type="radio" name="q1" value="Б"> Б) Вплив на громадську думку, переконання читача або слухача.</label>
+                <label><input type="radio" name="q1" value="В"> В) Обмін інформацією в невимушеній, неофіційній обстановці.</label>
+                <label><input type="radio" name="q1" value="Г"> Г) Об'єктивне повідомлення про результати наукових досліджень.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 2 -->
+        <div class="question">
+            <p>2. Який стиль мовлення характеризується наявністю термінів, складних синтаксичних конструкцій, об'єктивністю та повною відсутністю емоційного забарвлення?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="А"> А) Публіцистичний</label>
+                <label><input type="radio" name="q2" value="Б"> Б) Офіційно-діловий</label>
+                <label><input type="radio" name="q2" value="В"> В) Науковий</label>
+                <label><input type="radio" name="q2" value="Г"> Г) Художній</label>
+            </div>
+        </div>
+
+        <!-- Запитання 3 -->
+        <div class="question">
+            <p>3. Прочитайте уривок: «Згідно з Постановою Кабінету Міністрів України від 12.05.2023 № 456, органам місцевого самоврядування доручено забезпечити...». До якого стилю він належить?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q3" value="Б"> Б) Офіційно-діловий</label>
+                <label><input type="radio" name="q3" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q3" value="Г"> Г) Розмовний</label>
+            </div>
+        </div>
+
+        <!-- Запитання 4 -->
+        <div class="question">
+            <p>4. Виберіть правильний варіант слововживання, характерний для ділового мовлення:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="А"> А) Приймати участь у конференції</label>
+                <label><input type="radio" name="q4" value="Б"> Б) Брати участь у конференції</label>
+                <label><input type="radio" name="q4" value="В"> В) Принімати участь в конференції</label>
+                <label><input type="radio" name="q4" value="Г"> Г) Займатися участю у конференції</label>
+            </div>
+        </div>
+
+        <!-- Запитання 5 -->
+        <div class="question">
+            <p>5. Що з наведеного є обов'язковою ознакою офіційно-ділового стилю?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="А"> А) Використання авторських неологізмів та метафор.</label>
+                <label><input type="radio" name="q5" value="Б"> Б) Стандартизація мови, використання сталих словосполучень (канцеляризмів, штампів).</label>
+                <label><input type="radio" name="q5" value="В"> В) Використання просторічної та емоційно-експресивної лексики.</label>
+                <label><input type="radio" name="q5" value="Г"> Г) Прихований підтекст та багатозначність слів.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 6 -->
+        <div class="question">
+            <p>6. Виберіть граматично правильну конструкцію для ділового документа:</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="А"> А) Згідно наказу директора</label>
+                <label><input type="radio" name="q6" value="Б"> Б) Відповідно до наказу директора</label>
+                <label><input type="radio" name="q6" value="В"> В) У відповідності з наказом директора</label>
+                <label><input type="radio" name="q6" value="Г"> Г) Згідно до наказу директора</label>
+            </div>
+        </div>
+
+        <!-- Запитання 7 -->
+        <div class="question">
+            <p>7. Укажіть рядок, у якому всі слова є типовими для офіційно-ділового стилю (канцеляризмами):</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="А"> А) Вищезазначений, клопотання, чинний, ухвалити.</label>
+                <label><input type="radio" name="q7" value="Б"> Б) Крутий, інвестиції, мегапроєкт, тусовка.</label>
+                <label><input type="radio" name="q7" value="В"> В) Лебідонька, сонечко, працювати, відпочивати.</label>
+                <label><input type="radio" name="q7" value="Г"> Г) Квант, гіпотеза, інтеграл, синтаксис.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 8 -->
+        <div class="question">
+            <p>8. Прочитайте уривок: «Експерти шоковані! Ціни на ринку нерухомості знову злетіли до небес. Чи зможуть молоді сім'ї дозволити собі власне житло цього року?». До якого стилю він належить?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="А"> А) Науковий</label>
+                <label><input type="radio" name="q8" value="Б"> Б) Офіційно-діловий</label>
+                <label><input type="radio" name="q8" value="В"> В) Публіцистичний</label>
+                <label><input type="radio" name="q8" value="Г"> Г) Художній</label>
+            </div>
+        </div>
+
+        <!-- Запитання 9 -->
+        <div class="question">
+            <p>9. Знайдіть правильний відповідник до російського вислову «действующий закон»:</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="А"> А) Діючий закон</label>
+                <label><input type="radio" name="q9" value="Б"> Б) Чинний закон</label>
+                <label><input type="radio" name="q9" value="В"> В) Працюючий закон</label>
+                <label><input type="radio" name="q9" value="Г"> Г) Актуальний закон</label>
+            </div>
+        </div>
+
+        <!-- Запитання 10 -->
+        <div class="question">
+            <p>10. Елемент документа (назва, дата, підпис, текст, адресат), що забезпечує його юридичну силу, називається:</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="А"> А) Штамп</label>
+                <label><input type="radio" name="q10" value="Б"> Б) Бланк</label>
+                <label><input type="radio" name="q10" value="В"> В) Реквізит</label>
+                <label><input type="radio" name="q10" value="Г"> Г) Формуляр</label>
+            </div>
+        </div>
+
+        <!-- Запитання 11 -->
+        <div class="question">
+            <p>11. Який жанр (вид документа) НЕ належить до офіційно-ділового стилю?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="А"> А) Резюме</label>
+                <label><input type="radio" name="q11" value="Б"> Б) Доповідна записка</label>
+                <label><input type="radio" name="q11" value="В"> В) Нарис</label>
+                <label><input type="radio" name="q11" value="Г"> Г) Трудовий договір</label>
+            </div>
+        </div>
+
+        <!-- Запитання 12 -->
+        <div class="question">
+            <p>12. Як правильно перекласти українською мовою словосполучення «проводить мероприятия»?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="А"> А) Проводити міроприємства</label>
+                <label><input type="radio" name="q12" value="Б"> Б) Робити міроприємства</label>
+                <label><input type="radio" name="q12" value="В"> В) Проводити заходи</label>
+                <label><input type="radio" name="q12" value="Г"> Г) Влаштовувати заходи</label>
+            </div>
+        </div>
+
+        <button type="button" class="btn" id="submitBtn" onclick="checkTest()">Завершити тест та надіслати на перевірку</button>
+    </form>
+
+    <div id="result"></div>
+    <div id="sendStatus"></div>
+</div>
+</div>
+
+<script>
+    // =====================================================
+    // НАЛАШТУВАННЯ ТЕСТУ
+    // =====================================================
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8eBPxfBN18vXv5rb8elcMQ6TJ82UNzk7Q19TTOSPHN5Kn8_c1TuKAqBLaUZ2Dm1dlyg/exec';
+    const TEST_THEME = 'Функціональні стилі мовлення. Офіційно-діловий стиль';
+    const TEST_ID = 'test-1';
+
+    // Захист від копіювання
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('copy', event => event.preventDefault());
+
+    // =====================================================
+    // ПЕРЕВІРКА СТАТУСУ ПРИ ЗАВАНТАЖЕННІ
+    // =====================================================
+    window.addEventListener('load', function() {
+        fetch(`${GOOGLE_SCRIPT_URL}?test=${TEST_ID}`)
+            .then(r => r.json())
+            .then(data => {
+                if (!data.enabled) {
+                    document.getElementById('overlayContent').innerHTML = `
+                        <div class="overlay-disabled">
+                            <div class="icon">&#x1F512;</div>
+                            <div class="overlay-logo">&#x412;&#x422;&#x415;&#x406;</div>
+                            <h2>&#x422;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F; &#x43D;&#x435;&#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F;&#x43D;&#x435;</h2>
+                            <p>${data.message || '&#x412;&#x438;&#x43A;&#x43B;&#x430;&#x434;&#x430;&#x447; &#x442;&#x438;&#x43C;&#x447;&#x430;&#x441;&#x43E;&#x432;&#x43E; &#x437;&#x430;&#x43A;&#x440;&#x438;&#x432; &#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F; &#x434;&#x43E; &#x442;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F;.'}</p>
+                        </div>`;
+                } else {
+                    showCodeForm();
+                }
+            })
+            .catch(() => { showCodeForm(); });
+    });
+
+    function showCodeForm() {
+        document.getElementById('overlayContent').innerHTML = [
+            '<div class="overlay-logo">ВТЕІ</div>',
+            '<h2>🔑 Введіть код доступу</h2>',
+            '<p>Отримайте код у вашого викладача перед початком тестування.</p>',
+            '<input type="text" id="codeInput" class="overlay-input" placeholder="&#x2022; &#x2022; &#x2022; &#x2022; &#x2022; &#x2022;" maxlength="12" autocomplete="off" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key===\'Enter\') submitCode()">',
+            '<button class="overlay-btn" id="codeBtn" onclick="submitCode()">Розпочати тест →</button>',
+            '<div class="overlay-error" id="codeError"></div>'
+        ].join('');
+        setTimeout(function() {
+            var inp = document.getElementById('codeInput');
+            if (inp) inp.focus();
+        }, 100);
+    }
+
+    function submitCode() {
+        var input = document.getElementById('codeInput');
+        var btn = document.getElementById('codeBtn');
+        var errorEl = document.getElementById('codeError');
+        var code = input.value.trim().toUpperCase();
+
+        if (!code) { shakeInput(); errorEl.textContent = 'Будь ласка, введіть код доступу.'; return; }
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Перевіряємо...';
+        errorEl.textContent = '';
+
+        fetch(GOOGLE_SCRIPT_URL + '?test=' + TEST_ID + '&code=' + encodeURIComponent(code))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.codeValid) {
+                    var overlay = document.getElementById('overlay');
+                    overlay.classList.add('hidden');
+                    setTimeout(function() { overlay.style.display = 'none'; }, 500);
+                } else {
+                    shakeInput();
+                    errorEl.textContent = data.message || '❌ Невірний код. Спробуйте ще раз.';
+                    btn.disabled = false;
+                    btn.textContent = 'Розпочати тест →';
+                }
+            })
+            .catch(function() {
+                errorEl.textContent = '⚠️ Помилка з\'єднання. Зверніться до викладача.';
+                btn.disabled = false;
+                btn.textContent = 'Розпочати тест →';
+            });
+    }
+
+    function shakeInput() {
+        var input = document.getElementById('codeInput');
+        if (!input) return;
+        input.classList.remove('error');
+        void input.offsetWidth;
+        input.classList.add('error');
+        setTimeout(function() { input.classList.remove('error'); }, 500);
+    }
+
+    const correctAnswers = {
+        q1: "А", q2: "В", q3: "Б", q4: "Б",
+        q5: "Б", q6: "Б", q7: "А", q8: "В",
+        q9: "Б", q10: "В", q11: "В", q12: "В"
+    };
+
+    let testSubmitted = false;
+
+
+    function checkTest() {
+        if (testSubmitted) return;
+
+        const form = document.getElementById('quizForm');
+        const formData = new FormData(form);
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        // Збір відповідей студента у зручному форматі (1-А, 2-Б, і т.д.)
+        const studentAnswersArray = [];
+        for (let q of Object.keys(correctAnswers)) {
+            let num = q.replace('q', ''); // Прибираємо літеру 'q', залишаємо лише цифру
+            let ans = formData.get(q) || '—';
+            studentAnswersArray.push(num + '-' + ans);
+        }
+        const formattedAnswers = studentAnswersArray.join(', ');
+
+        for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
+            const userAnswer = formData.get(question);
+            
+            if (userAnswer === correctAnswer) {
+                score++;
+            }
+        }
+
+        const name = document.getElementById('studentName').value || 'Студент';
+        const group = document.getElementById('studentGroup').value || 'Група не вказана';
+        const statusDiv = document.getElementById('sendStatus');
+        
+        let gradeText = "";
+        if (score === 12) gradeText = "Відмінно!";
+        else if (score >= 9) gradeText = "Добре!";
+        else if (score >= 6) gradeText = "Задовільно.";
+        else gradeText = "Потребує доопрацювання.";
+
+        // Заблокувати кнопку та зафіксувати відправку
+        testSubmitted = true;
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Тест завершено';
+
+        // Відправка у Google Таблицю
+        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            statusDiv.innerHTML = '<span class="status-sending">⏳ Зберігаємо результати...</span>';
+
+            const payload = JSON.stringify({
+                theme: TEST_THEME,
+                name: name,
+                group: group,
+                score: score,
+                total: total,
+                grade: gradeText,
+                answers: formattedAnswers
+            });
+
+            // Відправка як звичайний текст, щоб обійти блокування CORS у браузері
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: payload
+            })
+            .then(() => {
+                statusDiv.innerHTML = '<span class="status-ok">✅ Дякуємо, що пройшли тест! Ваші дані успішно надіслано.</span>';
+            })
+            .catch((err) => {
+                statusDiv.innerHTML = '<span class="status-error">⚠️ Помилка збереження. Ваш результат: ' + score + '/' + total + '</span>';
+                console.error('Помилка відправки:', err);
+            });
+        }
+
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
