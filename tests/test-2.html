@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест №2 | Мовна політика та норми літературної мови — ВТЕІ</title>
+    <meta name="description" content="Пройти онлайн-тест №1: 'Функціональні стилі мовлення' на освітньому порталі.">
+    
+    <!-- Open Graph (SEO для соцмереж) -->
+    <meta property="og:title" content="Тест №2: Мовна політика та норми літературної мови | Освітній портал">
+    <meta property="og:description" content="Пройти тестування з дисципліни 'Українська мова за професійним спрямуванням'.">
+    <meta property="og:image" content="https://vtei.online/img/og-image.jpg">
+    <meta property="og:url" content="https://vtei.online/tests/test-2.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../img/favicon.jpg">
+    <link rel="apple-touch-icon" href="../img/favicon.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Overlay - екран завантаження та введення коду */
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0d2f5e 0%, #1a4b8a 40%, #1e7d37 100%);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        #overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .overlay-box {
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        }
+        .overlay-logo {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a017, #f1c40f);
+            color: #0d2f5e;
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .overlay-box h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0d2f5e;
+            margin-bottom: 8px;
+        }
+        .overlay-box p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .overlay-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(26,75,138,0.2);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 4px;
+            color: #1a4b8a;
+            background: rgba(26,75,138,0.04);
+            outline: none;
+            transition: all 0.25s;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+        .overlay-input:focus {
+            border-color: #1a4b8a;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26,75,138,0.12);
+        }
+        .overlay-input.error {
+            border-color: #dc3545;
+            background: rgba(220,53,69,0.04);
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,100%{transform:translateX(0)}
+            25%{transform:translateX(-8px)}
+            75%{transform:translateX(8px)}
+        }
+        .overlay-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a4b8a, #0d2f5e);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(26,75,138,0.35);
+            transition: all 0.3s;
+        }
+        .overlay-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(26,75,138,0.45);
+        }
+        .overlay-btn:disabled {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .overlay-error {
+            color: #dc3545;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            min-height: 20px;
+        }
+        .overlay-loading {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 16px;
+        }
+        /* Вимкнено викладачем */
+        .overlay-disabled {
+            text-align: center;
+        }
+        .overlay-disabled .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+        .overlay-disabled h2 {
+            color: #0d2f5e;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .overlay-disabled p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        /* Стилі для форми тесту */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; margin: 0; padding: 0; }
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .glass-panel { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .test-page-header h1 { text-align: center; color: #2c3e50; font-size: 24px; margin-bottom: 5px; }
+        .test-page-header h2 { text-align: center; color: #2c3e50; font-size: 18px; font-weight: normal; margin-top: 0; margin-bottom: 30px; }
+        .student-info { display: flex; justify-content: space-between; margin-bottom: 30px; gap: 20px; }
+        .student-info div { flex: 1; }
+        .student-info input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
+        .question { background: #fafafa; border-left: 4px solid #3498db; padding: 15px 20px; margin-bottom: 20px; border-radius: 4px; }
+        .question p { font-weight: bold; margin-top: 0; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
+        .options input[type="radio"] { margin-right: 10px; }
+        #submitBtn { display: block; width: 100%; padding: 15px; background: #3498db; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; margin-top: 20px;}
+        #submitBtn:hover:not(:disabled) { background: #2980b9; }
+        #submitBtn:disabled { background: #95a5a6; cursor: not-allowed; }
+        #result { margin-top: 30px; padding: 20px; background: #e8f8f5; border: 1px solid #1abc9c; border-radius: 4px; text-align: center; font-size: 20px; font-weight: bold; display: none; }
+        #sendStatus { text-align: center; margin-top: 15px; font-weight: bold; }
+        .status-sending { color: #f39c12; }
+        .status-ok { color: #27ae60; }
+        .status-error { color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+<!-- OVERLAY: перевірка коду доступу -->
+<div id="overlay">
+    <div class="overlay-box">
+        <div id="overlayContent">
+            <!-- Стан завантаження -->
+            <div class="overlay-logo">ВТЕІ</div>
+            <h2>Перевірка доступу...</h2>
+            <p class="overlay-loading">⏳ Перевіряємо статус тестування...</p>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+<div class="glass-panel">
+    <div class="test-page-header">
+        <h1>ТЕСТОВІ ЗАВДАННЯ</h1>
+        <h2>з дисципліни «Українська мова за професійним спрямуванням»<br>Тема: Мовна політика та норми літературної мови</h2>
+    </div>
+
+    <div class="student-info">
+        <div>
+            <label for="studentName">ПІБ студента:</label>
+            <input type="text" id="studentName" placeholder="Введіть ваше прізвище та ім'я">
+        </div>
+        <div>
+            <label for="studentGroup">Група:</label>
+            <input type="text" id="studentGroup" placeholder="Введіть групу">
+        </div>
+    </div>
+
+    <form id="quizForm">
+                <!-- Запитання 1 -->
+        <div class="question">
+            <p>1. Державними мовами в Україні є:</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="А"> А) українська;</label>
+                <label><input type="radio" name="q1" value="Б"> Б) українська та російська;</label>
+                <label><input type="radio" name="q1" value="В"> В) російська;</label>
+                <label><input type="radio" name="q1" value="Г"> Г) всі мови національних меншин України.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 2 -->
+        <div class="question">
+            <p>2. Поняття "мова міжнаціонального спілкування" означає:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="А"> А) синонім до "міжнародної мови";</label>
+                <label><input type="radio" name="q2" value="Б"> Б) мову-посередник, обрану для спілкування у багатонаціональній державі;</label>
+                <label><input type="radio" name="q2" value="В"> В) мову, що використовується в особистому спілкуванні представників різних націй;</label>
+                <label><input type="radio" name="q2" value="Г"> Г) одну зі світових мов.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 3 -->
+        <div class="question">
+            <p>3. Українське законодавство, яке регулює питання мовної політики, визначає що:</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="А"> А) держава надає можливість особистості з метою втілення своїх прав людини самостійно обирати мову спілкування;</label>
+                <label><input type="radio" name="q3" value="Б"> Б) держава дбає про задоволення національно-культурних і мовних потреб українців, які проживають за межами держави;</label>
+                <label><input type="radio" name="q3" value="В"> В) Україна забезпечує вивчення державної мови всіма особами, які цього бажають;</label>
+                <label><input type="radio" name="q3" value="Г"> Г) на державному рівні дозволяється замінити у процесі навчання українську мову на будь-яку мову національних меншин України.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 4 -->
+        <div class="question">
+            <p>4. Вибір мови повсякденного спілкування:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="А"> А) встановлюється Конституцією України;</label>
+                <label><input type="radio" name="q4" value="Б"> Б) є невід'ємним правом самих громадян;</label>
+                <label><input type="radio" name="q4" value="В"> В) встановлюється міжнародно-правовими документами;</label>
+                <label><input type="radio" name="q4" value="Г"> Г) підтверджується нотаріально завіреними довідками.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 5 -->
+        <div class="question">
+            <p>5. Під державною мовою розуміють:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="А"> А) мову більшості населення країни;</label>
+                <label><input type="radio" name="q5" value="Б"> Б) традиційну мову, яка функціонує на певній території;</label>
+                <label><input type="radio" name="q5" value="В"> В) правовий статус певної мови, закріплений на законодавчому рівні з метою використання її у всіх сферах офіційного життя держави;</label>
+                <label><input type="radio" name="q5" value="Г"> Г) мову, визначену шляхом опитування думки населення на референдумі.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 6 -->
+        <div class="question">
+            <p>6. Основними ознаками літературної мови є такі:</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="А"> А) унормованість, функціонування у галузі державної і політичної діяльності, наявність територіальних діалектів, наявність усної та писемної форм існування;</label>
+                <label><input type="radio" name="q6" value="Б"> Б) унормованість, наявність усної і писемної форм існування, функціонування у галузі державної і політичної діяльності, наявність територіальних діалектів;</label>
+                <label><input type="radio" name="q6" value="В"> В) наддіалектна форма існування, унормованість, наявність усної і писемної форм існування, поліфункціональність, стилістична диференціація.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 7 -->
+        <div class="question">
+            <p>7. Сукупність загальноприйнятих правил реалізації мовної системи, закріплених у процесі суспільної комунікації, це:</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="А"> А) орфографічні правила;</label>
+                <label><input type="radio" name="q7" value="Б"> Б) мовні норми;</label>
+                <label><input type="radio" name="q7" value="В"> В) граматичні правила.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 8 -->
+        <div class="question">
+            <p>8. Обговорення, відстоювання та пропаганда важливих суспільно-політичних ідей, сприяння суспільному розвитку – мета мовлення:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="А"> А) розмовного стилю;</label>
+                <label><input type="radio" name="q8" value="Б"> Б) публіцистичного стилю;</label>
+                <label><input type="radio" name="q8" value="В"> В) офіційно-ділового стилю.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 9 -->
+        <div class="question">
+            <p>9. Мовними особливостями офіційно-ділового стилю є:</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="А"> А) використання канцелярської лексики, широке вживання готових словесних формул, переважання простих ускладнених синтаксичних конструкцій;</label>
+                <label><input type="radio" name="q9" value="Б"> Б) використання суспільно-політичної лексики, переважання складних речень, гранично точний виклад, часте вживання прислівників і прикметників;</label>
+                <label><input type="radio" name="q9" value="В"> В) широке застосування слів у переносному значенні, гранично точний виклад, переважання простих ускладнених синтаксичних конструкцій.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 10 -->
+        <div class="question">
+            <p>10. Поєднанням інформативних і впливових компонентів, оцінність, емоційність, точність, логічність, офіційність, стандартизованість – це ознаки:</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="А"> А) розмовно-побутового стилю;</label>
+                <label><input type="radio" name="q10" value="Б"> Б) офіційно-ділового стилю;</label>
+                <label><input type="radio" name="q10" value="В"> В) публіцистичного стилю;</label>
+                <label><input type="radio" name="q10" value="Г"> Г) наукового стилю;</label>
+                <label><input type="radio" name="q10" value="Ґ"> Ґ) конфесійного стилю.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 11 -->
+        <div class="question">
+            <p>11. Велика кількість термінів і слів з абстрактним значенням, застосування складних синтаксичних конструкцій, уживання слів у прямому значенні – це ознаки стилю:</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="А"> А) розмовно-побутового;</label>
+                <label><input type="radio" name="q11" value="Б"> Б) офіційно-ділового;</label>
+                <label><input type="radio" name="q11" value="В"> В) публіцистичного;</label>
+                <label><input type="radio" name="q11" value="Г"> Г) наукового;</label>
+                <label><input type="radio" name="q11" value="Ґ"> Ґ) конфесійного.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 12 -->
+        <div class="question">
+            <p>12. Широке використання готових словесних формул, трафаретів:</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="А"> А) порушення норм офіційно-ділового стилю;</label>
+                <label><input type="radio" name="q12" value="Б"> Б) порушення норм адміністративно-канцелярського підстилю офіційно-ділового стилю;</label>
+                <label><input type="radio" name="q12" value="В"> В) відповідає нормам адміністративно-канцелярського підстилю офіційно ділового стилю</label>
+            </div>
+        </div>
+        <button type="button" class="btn" id="submitBtn" onclick="checkTest()">Завершити тест та надіслати на перевірку</button>
+    </form>
+
+    <div id="result"></div>
+    <div id="sendStatus"></div>
+</div>
+</div>
+
+<script>
+    // =====================================================
+    // НАЛАШТУВАННЯ ТЕСТУ
+    // =====================================================
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8eBPxfBN18vXv5rb8elcMQ6TJ82UNzk7Q19TTOSPHN5Kn8_c1TuKAqBLaUZ2Dm1dlyg/exec';
+    const TEST_THEME = 'Мовна політика та норми літературної мови';
+    const TEST_ID = 'test-2';
+
+    // Захист від копіювання
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('copy', event => event.preventDefault());
+
+    // =====================================================
+    // ПЕРЕВІРКА СТАТУСУ ПРИ ЗАВАНТАЖЕННІ
+    // =====================================================
+    window.addEventListener('load', function() {
+        fetch(`${GOOGLE_SCRIPT_URL}?test=${TEST_ID}`)
+            .then(r => r.json())
+            .then(data => {
+                if (!data.enabled) {
+                    document.getElementById('overlayContent').innerHTML = `
+                        <div class="overlay-disabled">
+                            <div class="icon">&#x1F512;</div>
+                            <div class="overlay-logo">&#x412;&#x422;&#x415;&#x406;</div>
+                            <h2>&#x422;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F; &#x43D;&#x435;&#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F;&#x43D;&#x435;</h2>
+                            <p>${data.message || '&#x412;&#x438;&#x43A;&#x43B;&#x430;&#x434;&#x430;&#x447; &#x442;&#x438;&#x43C;&#x447;&#x430;&#x441;&#x43E;&#x432;&#x43E; &#x437;&#x430;&#x43A;&#x440;&#x438;&#x432; &#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F; &#x434;&#x43E; &#x442;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F;.'}</p>
+                            <div style="margin-top: 24px;">
+                                <a href="../index.html" style="color: #1a4b8a; text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 16px; background: rgba(26,75,138,0.05); border-radius: 8px;">← Повернутись на головну</a>
+                            </div>
+                        </div>`;
+                } else {
+                    showCodeForm();
+                }
+            })
+            .catch(() => { showCodeForm(); });
+    });
+
+    function showCodeForm() {
+        document.getElementById('overlayContent').innerHTML = [
+            '<div class="overlay-logo">ВТЕІ</div>',
+            '<h2>🔑 Введіть код доступу</h2>',
+            '<p>Отримайте код у вашого викладача перед початком тестування.</p>',
+            '<input type="text" id="codeInput" class="overlay-input" placeholder="&#x2022; &#x2022; &#x2022; &#x2022; &#x2022; &#x2022;" maxlength="12" autocomplete="off" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key===\'Enter\') submitCode()">',
+            '<button class="overlay-btn" id="codeBtn" onclick="submitCode()">Розпочати тест →</button>',
+            '<div class="overlay-error" id="codeError"></div>',
+            '<div style="margin-top: 16px;">',
+            '    <a href="../index.html" style="color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">← Повернутись на головну</a>',
+            '</div>'
+        ].join('');
+        setTimeout(function() {
+            var inp = document.getElementById('codeInput');
+            if (inp) inp.focus();
+        }, 100);
+    }
+
+    function submitCode() {
+        var input = document.getElementById('codeInput');
+        var btn = document.getElementById('codeBtn');
+        var errorEl = document.getElementById('codeError');
+        var code = input.value.trim().toUpperCase();
+
+        if (!code) { shakeInput(); errorEl.textContent = 'Будь ласка, введіть код доступу.'; return; }
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Перевіряємо...';
+        errorEl.textContent = '';
+
+        fetch(GOOGLE_SCRIPT_URL + '?test=' + TEST_ID + '&code=' + encodeURIComponent(code))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.codeValid) {
+                    var overlay = document.getElementById('overlay');
+                    overlay.classList.add('hidden');
+                    setTimeout(function() { overlay.style.display = 'none'; }, 500);
+                } else {
+                    shakeInput();
+                    errorEl.textContent = data.message || '❌ Невірний код. Спробуйте ще раз.';
+                    btn.disabled = false;
+                    btn.textContent = 'Розпочати тест →';
+                }
+            })
+            .catch(function() {
+                errorEl.textContent = '⚠️ Помилка з\'єднання. Зверніться до викладача.';
+                btn.disabled = false;
+                btn.textContent = 'Розпочати тест →';
+            });
+    }
+
+    function shakeInput() {
+        var input = document.getElementById('codeInput');
+        if (!input) return;
+        input.classList.remove('error');
+        void input.offsetWidth;
+        input.classList.add('error');
+        setTimeout(function() { input.classList.remove('error'); }, 500);
+    }
+
+    // Оновлені відповіді
+    const correctAnswers = {
+        q1: "А", q2: "Б", q3: "Б", q4: "Б",
+        q5: "В", q6: "В", q7: "Б", q8: "Б",
+        q9: "А", q10: "В", q11: "Г", q12: "В"
+    };
+
+    let testSubmitted = false;
+
+    function checkTest() {
+        if (testSubmitted) return;
+
+        const form = document.getElementById('quizForm');
+        const formData = new FormData(form);
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        // Збір відповідей студента у зручному форматі (1-А, 2-Б, і т.д.)
+        const studentAnswersArray = [];
+        for (let q of Object.keys(correctAnswers)) {
+            let num = q.replace('q', ''); 
+            let ans = formData.get(q) || '—';
+            studentAnswersArray.push(num + '-' + ans);
+        }
+        const formattedAnswers = studentAnswersArray.join(', ');
+
+        for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
+            const userAnswer = formData.get(question);
+            
+            if (userAnswer === correctAnswer) {
+                score++;
+            }
+        }
+
+        const name = document.getElementById('studentName').value || 'Студент';
+        const group = document.getElementById('studentGroup').value || 'Група не вказана';
+        const statusDiv = document.getElementById('sendStatus');
+        const resultDiv = document.getElementById('result');
+        
+        let gradeText = "";
+        if (score === 12) gradeText = "Відмінно!";
+        else if (score >= 9) gradeText = "Добре!";
+        else if (score >= 6) gradeText = "Задовільно.";
+        else gradeText = "Потребує доопрацювання.";
+
+        // Заблокувати кнопку та зафіксувати відправку
+        testSubmitted = true;
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Тест завершено';
+
+        resultDiv.innerHTML = `
+            ${name} (${group})<br>
+            Тема: ${TEST_THEME}
+        `;
+        resultDiv.style.display = 'block';
+
+        // Відправка у Google Таблицю
+        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            statusDiv.innerHTML = '<span class="status-sending">⏳ Зберігаємо результати...</span>';
+
+            const payload = JSON.stringify({
+                theme: TEST_THEME,
+                name: name,
+                group: group,
+                score: score,
+                total: total,
+                grade: gradeText,
+                answers: formattedAnswers
+            });
+
+            // Відправка як звичайний текст, щоб обійти блокування CORS у браузері
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: payload
+            })
+            .then(() => {
+                statusDiv.innerHTML = '<span class="status-ok">✅ Дякуємо, що пройшли тест! Ваші дані успішно надіслано.</span>';
+            })
+            .catch((err) => {
+                statusDiv.innerHTML = '<span class="status-error">⚠️ Помилка збереження. Ваш результат: ' + score + '/' + total + '</span>';
+                console.error('Помилка відправки:', err);
+            });
+        }
+
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
