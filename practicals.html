@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практичні роботи | ВТЕІ Онлайн-тестування</title>
+    <meta name="description" content="Список практичних робіт з дисципліни «Українська мова за професійним спрямуванням». Завантажуйте матеріали для самостійної підготовки.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Практичні роботи | Освітній портал">
+    <meta property="og:description" content="Матеріали практичних робіт для студентів.">
+    <meta property="og:image" content="https://vtei.online/img/og-image.jpg">
+    <meta property="og:url" content="https://vtei.online/practicals.html">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="img/favicon.jpg">
+    <link rel="apple-touch-icon" href="img/favicon.jpg">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="header-logo">
+            <span class="logo-badge">ВТЕІ</span>
+            Онлайн-тестування
+        </a>
+        <button class="burger-btn" id="burgerBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<nav class="side-menu" id="sideMenu">
+    <div class="side-menu-label">Навігація</div>
+    <a href="index.html"><span class="menu-icon">🏠</span> Головна</a>
+    <a href="index.html#tests"><span class="menu-icon">📝</span> Тести</a>
+    <a href="practicals.html" class="active-link"><span class="menu-icon">📄</span> Практичні</a>
+</nav>
+
+<script>
+function toggleMenu() {
+    document.getElementById('burgerBtn').classList.toggle('active');
+    document.getElementById('sideMenu').classList.toggle('active');
+    document.getElementById('menuOverlay').classList.toggle('active');
+}
+</script>
+
+<div class="main-container">
+
+    <!-- Hero секція -->
+    <div class="hero">
+        <div class="hero-label">📄 Навчальні матеріали</div>
+        <h1>Практичні роботи</h1>
+        <p>Завантажте матеріали практичних робіт з дисципліни «Українська мова за професійним спрямуванням».</p>
+    </div>
+
+    <p class="section-title">Список практичних робіт</p>
+
+    <div class="practicals-table-wrap">
+        <table class="practicals-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Назва практичної роботи</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 1</span>
+                        <a href="https://drive.google.com/file/d/1fZUqi2yLsNI8sTSZB0iJcQtfODECucDD/view?usp=sharing" target="_blank" class="download-link" title="Завантажити">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 2</span>
+                        <a href="https://drive.google.com/file/d/1l5iefURfL_XTlMQzjvvSzPSaGA7MVXxP/view?usp=sharing" target="_blank" class="download-link" title="Завантажити">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 3</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 4</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 5</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 6</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 7</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="td-flex">
+                        <span>Практична робота № 8</span>
+                        <a href="#" class="download-link disabled" title="Незабаром">↓</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById('burgerBtn').classList.toggle('active');
+    document.getElementById('sideMenu').classList.toggle('active');
+    document.getElementById('menuOverlay').classList.toggle('active');
+}
+
+// Робимо весь рядок таблиці клікабельним
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.practicals-table tbody tr').forEach(tr => {
+        tr.addEventListener('click', function(e) {
+            // Якщо клікнули безпосередньо по кнопці - не дублюємо дію
+            if (e.target.closest('.download-link')) return;
+            
+            const link = this.querySelector('.download-link:not(.disabled)');
+            if (link) {
+                window.open(link.href, link.target || '_self');
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
