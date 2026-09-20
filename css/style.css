@@ -457,6 +457,28 @@ header {
     transform: none;
 }
 
+/* ───────── RESULT ───────── */
+#result {
+    display: none;
+    text-align: center;
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(26, 75, 138, 0.03);
+    border: 1px solid rgba(26, 75, 138, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+#result b {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--vtei-blue-dark);
+    margin-bottom: 4px;
+}
+
 /* ───────── STATUS ───────── */
 #sendStatus {
     text-align: center;
@@ -495,4 +517,261 @@ header {
     .student-info { flex-direction: column; }
     .tests-grid { grid-template-columns: 1fr; }
     .header-content { padding: 0 16px; }
+
+    /* Таблиця на мобільних */
+    .practicals-table th, 
+    .practicals-table td { 
+        padding: 12px 10px; 
+        font-size: 13.5px; 
+    }
+    .practicals-table thead th {
+        white-space: normal !important; /* Дозволяємо перенесення рядків (перевизначаємо глобальний nowrap) */
+        font-size: 11px !important;     /* Зменшуємо шрифт заголовків */
+        letter-spacing: 0 !important;   /* Прибираємо міжлітерний інтервал */
+    }
+    .practicals-table td:first-child { width: 40px; }
+    .download-link { width: 32px; height: 32px; font-size: 16px; }
 }
+
+/* ───────── BURGER MENU ───────── */
+.burger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 201;
+    position: relative;
+}
+
+.burger-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.burger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Overlay */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 47, 94, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 149;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Sidebar */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #0d2f5e 0%, #1a4b8a 100%);
+    z-index: 150;
+    padding: 90px 28px 40px;
+    transition: right 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+}
+
+.side-menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.25s;
+    margin-bottom: 4px;
+}
+
+.side-menu a:hover,
+.side-menu a.active-link {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+}
+
+.side-menu a .menu-icon {
+    font-size: 20px;
+    width: 28px;
+    text-align: center;
+}
+
+.side-menu-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 16px 0;
+}
+
+/* ───────── PRACTICALS PAGE ───────── */
+.practicals-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.practicals-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-size: 14.5px;
+}
+
+.practicals-table thead {
+    background: var(--grad-blue);
+    color: #fff;
+}
+
+.practicals-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.practicals-table thead th:nth-child(2) {
+    width: auto;
+}
+
+.practicals-table tbody tr {
+    border-bottom: 1px solid rgba(26,75,138,0.06);
+    transition: all 0.2s;
+    position: relative;
+}
+
+.practicals-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.practicals-table tbody tr:has(.download-link:not(.disabled)):hover {
+    background: rgba(26,75,138,0.03);
+    cursor: pointer;
+}
+
+.practicals-table td {
+    padding: 16px 20px;
+    vertical-align: middle;
+}
+
+.practicals-table td:first-child {
+    font-weight: 700;
+    color: var(--vtei-blue);
+    text-align: center;
+    width: 60px;
+}
+
+.td-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-right: 20px; /* Ensure space for the button */
+}
+
+.download-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(30, 125, 55, 0.1);
+    color: var(--vtei-green);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.25s;
+}
+
+.download-link:hover {
+    background: var(--vtei-green);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-green);
+}
+
+.download-link.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    background: rgba(100,116,139,0.1);
+    color: var(--text-muted);
+}
+
+.practicals-status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.practicals-status.available {
+    background: rgba(30, 125, 55, 0.1);
+    color: var(--vtei-green);
+}
+
+.practicals-status.soon {
+    background: rgba(100,116,139,0.1);
+    color: var(--text-muted);
+}
+
