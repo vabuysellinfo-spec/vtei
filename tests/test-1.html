@@ -153,30 +153,27 @@
             font-size: 15px;
             line-height: 1.6;
         }
-        /* Стилі для форми тесту */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; margin: 0; padding: 0; }
-        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        .glass-panel { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .test-page-header h1 { text-align: center; color: #2c3e50; font-size: 24px; margin-bottom: 5px; }
-        .test-page-header h2 { text-align: center; color: #2c3e50; font-size: 18px; font-weight: normal; margin-top: 0; margin-bottom: 30px; }
-        .student-info { display: flex; justify-content: space-between; margin-bottom: 30px; gap: 20px; }
-        .student-info div { flex: 1; }
-        .student-info input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
-        .question { background: #fafafa; border-left: 4px solid #3498db; padding: 15px 20px; margin-bottom: 20px; border-radius: 4px; }
-        .question p { font-weight: bold; margin-top: 0; }
-        .options label { display: block; margin-bottom: 10px; cursor: pointer; }
-        .options input[type="radio"] { margin-right: 10px; }
-        #submitBtn { display: block; width: 100%; padding: 15px; background: #3498db; color: #fff; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; margin-top: 20px;}
-        #submitBtn:hover:not(:disabled) { background: #2980b9; }
-        #submitBtn:disabled { background: #95a5a6; cursor: not-allowed; }
-        #result { margin-top: 30px; padding: 20px; background: #e8f8f5; border: 1px solid #1abc9c; border-radius: 4px; text-align: center; font-size: 20px; font-weight: bold; display: none; }
-        #sendStatus { text-align: center; margin-top: 15px; font-weight: bold; }
-        .status-sending { color: #f39c12; }
-        .status-ok { color: #27ae60; }
-        .status-error { color: #e74c3c; }
+        /* Валідація полів студента */
+        .student-info input.input-error {
+            border-color: #dc3545 !important;
+            background: rgba(220, 53, 69, 0.04) !important;
+            box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.12) !important;
+            animation: shake 0.4s ease;
+        }
+        .validation-hint {
+            color: #dc3545;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+        .validation-hint.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
+
 
 <!-- OVERLAY: перевірка коду доступу -->
 <div id="overlay">
@@ -589,6 +586,18 @@
         setTimeout(function() { input.classList.remove('error'); }, 500);
     }
 
+    // Очищення помилок при введенні
+    document.getElementById('studentName').addEventListener('input', function() {
+        this.classList.remove('input-error');
+        var hint = this.parentElement.querySelector('.validation-hint');
+        if (hint) hint.remove();
+    });
+    document.getElementById('studentGroup').addEventListener('input', function() {
+        this.classList.remove('input-error');
+        var hint = this.parentElement.querySelector('.validation-hint');
+        if (hint) hint.remove();
+    });
+
     // Оновлені відповіді
     const correctAnswers = {
         q1: "А", q2: "В", q3: "Б", q4: "В",
@@ -604,6 +613,41 @@
 
     function checkTest() {
         if (testSubmitted) return;
+
+        // Валідація ПІБ та групи
+        const nameInput = document.getElementById('studentName');
+        const groupInput = document.getElementById('studentGroup');
+        const nameVal = nameInput.value.trim();
+        const groupVal = groupInput.value.trim();
+        let hasError = false;
+
+        // Прибрати попередні помилки
+        nameInput.classList.remove('input-error');
+        groupInput.classList.remove('input-error');
+        document.querySelectorAll('.validation-hint').forEach(el => el.remove());
+
+        if (!nameVal) {
+            nameInput.classList.add('input-error');
+            const hint = document.createElement('div');
+            hint.className = 'validation-hint visible';
+            hint.textContent = '⚠️ Будь ласка, введіть ваше прізвище та ім\'я';
+            nameInput.parentElement.appendChild(hint);
+            hasError = true;
+        }
+        if (!groupVal) {
+            groupInput.classList.add('input-error');
+            const hint = document.createElement('div');
+            hint.className = 'validation-hint visible';
+            hint.textContent = '⚠️ Будь ласка, введіть вашу групу';
+            groupInput.parentElement.appendChild(hint);
+            hasError = true;
+        }
+        if (hasError) {
+            const firstError = document.querySelector('.input-error');
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+            return;
+        }
 
         const form = document.getElementById('quizForm');
         const formData = new FormData(form);
@@ -627,8 +671,8 @@
             }
         }
 
-        const name = document.getElementById('studentName').value || 'Студент';
-        const group = document.getElementById('studentGroup').value || 'Група не вказана';
+        const name = nameVal;
+        const group = groupVal;
         const statusDiv = document.getElementById('sendStatus');
         const resultDiv = document.getElementById('result');
         
@@ -645,7 +689,7 @@
         btn.textContent = 'Тест завершено';
 
         resultDiv.innerHTML = `
-            ${name} (${group})<br>
+            <b>${name} (${group})</b>
             Тема: ${TEST_THEME}
         `;
         resultDiv.style.display = 'block';
