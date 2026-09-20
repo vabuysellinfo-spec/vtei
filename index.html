@@ -28,8 +28,27 @@
             <span class="logo-badge">ВТЕІ</span>
             Онлайн-тестування
         </a>
+        <button class="burger-btn" id="burgerBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>
+
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<nav class="side-menu" id="sideMenu">
+    <div class="side-menu-label">Навігація</div>
+    <a href="index.html" class="active-link"><span class="menu-icon">🏠</span> Головна</a>
+    <a href="index.html#tests"><span class="menu-icon">📝</span> Тести</a>
+    <a href="practicals.html"><span class="menu-icon">📄</span> Практичні</a>
+</nav>
+
+<script>
+function toggleMenu() {
+    document.getElementById('burgerBtn').classList.toggle('active');
+    document.getElementById('sideMenu').classList.toggle('active');
+    document.getElementById('menuOverlay').classList.toggle('active');
+}
+</script>
 
 <div class="main-container">
 
@@ -41,7 +60,7 @@
     </div>
 
     <!-- Картки тестів -->
-    <p class="section-title">Доступні тести</p>
+    <p class="section-title" id="tests">Доступні тести</p>
 
     <div class="tests-grid">
 
@@ -51,9 +70,9 @@
                 <span class="test-card-number">Тест №1</span>
                 <span class="test-card-questions">25 запитань</span>
             </div>
-            <div class="test-card-title">Стилі мовлення</div>
+            <div class="test-card-title">Функціональні стилі мовлення. Офіційно-діловий стиль</div>
             <div class="test-card-desc">
-                Перевірка знань щодо основних стилів української мови. Дізнайтеся, наскільки добре ви володієте мовними нормами.
+                Перевірка знань функцій, жанрів, морфологічних та синтаксичних норм, а також особливостей слововживання в діловому мовленні.
             </div>
             <div class="test-card-btn">
                 Почати тест <span class="arrow">→</span>
@@ -61,19 +80,19 @@
         </a>
 
         <!-- Тест 2 (скоро) -->
-<div class="test-card disabled">
-    <div class="test-card-meta">
-        <span class="test-card-number">Тест №2</span>
-        <span class="test-card-questions">12 запитань</span>
-    </div>
-    <div class="test-card-title">Мовна політика та норми літературної мови</div>
-    <div class="test-card-desc">
-        Перевірка знань про державну мову, мовну політику, ознаки літературної мови та стилістичні норми.
-    </div>
-    <div class="test-card-btn" style="background: linear-gradient(135deg, #94a3b8, #64748b); box-shadow: none;">
-        Незабаром...
-    </div>
-</div>
+        <div class="test-card disabled">
+            <div class="test-card-meta">
+                <span class="test-card-number">Тест №2</span>
+                <span class="test-card-questions">12 запитань</span>
+            </div>
+            <div class="test-card-title">Мовна політика та норми літературної мови</div>
+            <div class="test-card-desc">
+                Перевірка знань про державну мову, мовну політику, ознаки літературної мови та стилістичні норми.
+            </div>
+            <div class="test-card-btn" style="background: linear-gradient(135deg, #94a3b8, #64748b); box-shadow: none;">
+                Незабаром...
+            </div>
+        </div>
 
 
         <!-- Тест 3 (скоро) -->
