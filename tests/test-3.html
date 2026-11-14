@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест №3 | Українська мова за професійним спрямуванням — ВТЕІ</title>
+    <meta name="description" content="Пройти онлайн-тест №3 з української мови за професійним спрямуванням: мовні норми, лексика та ділова комунікація.">
+    
+    <!-- Open Graph (SEO для соцмереж) -->
+    <meta property="og:title" content="Тест №3: Українська мова за професійним спрямуванням | ВТЕІ">
+    <meta property="og:description" content="Комплексна перевірка мовних норм, лексики та ділової комунікації.">
+    <meta property="og:image" content="https://vtei.online/img/og-image.jpg">
+    <meta property="og:url" content="https://vtei.online/tests/test-3.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../img/favicon.jpg">
+    <link rel="apple-touch-icon" href="../img/favicon.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Overlay - екран завантаження та введення коду */
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0d2f5e 0%, #1a4b8a 40%, #1e7d37 100%);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        #overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .overlay-box {
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        }
+        .overlay-logo {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a017, #f1c40f);
+            color: #0d2f5e;
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .overlay-box h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0d2f5e;
+            margin-bottom: 8px;
+        }
+        .overlay-box p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .overlay-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(26,75,138,0.2);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 4px;
+            color: #1a4b8a;
+            background: rgba(26,75,138,0.04);
+            outline: none;
+            transition: all 0.25s;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+        .overlay-input:focus {
+            border-color: #1a4b8a;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26,75,138,0.12);
+        }
+        .overlay-input.error {
+            border-color: #dc3545;
+            background: rgba(220,53,69,0.04);
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,100%{transform:translateX(0)}
+            25%{transform:translateX(-8px)}
+            75%{transform:translateX(8px)}
+        }
+        .overlay-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a4b8a, #0d2f5e);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(26,75,138,0.35);
+            transition: all 0.3s;
+        }
+        .overlay-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(26,75,138,0.45);
+        }
+        .overlay-btn:disabled {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .overlay-error {
+            color: #dc3545;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            min-height: 20px;
+        }
+        .overlay-loading {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 16px;
+        }
+        /* Вимкнено викладачем */
+        .overlay-disabled {
+            text-align: center;
+        }
+        .overlay-disabled .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+        .overlay-disabled h2 {
+            color: #0d2f5e;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .overlay-disabled p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        /* Валідація полів студента */
+        .student-info input.input-error {
+            border-color: #dc3545 !important;
+            background: rgba(220, 53, 69, 0.04) !important;
+            box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.12) !important;
+            animation: shake 0.4s ease;
+        }
+        .validation-hint {
+            color: #dc3545;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+        .validation-hint.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- OVERLAY: перевірка коду доступу -->
+<div id="overlay">
+    <div class="overlay-box">
+        <div id="overlayContent">
+            <!-- Стан завантаження -->
+            <div class="overlay-logo">ВТЕІ</div>
+            <h2>Перевірка доступу...</h2>
+            <p class="overlay-loading">⏳ Перевіряємо статус тестування...</p>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+<div class="glass-panel">
+    <div class="test-page-header">
+        <h1>ТЕСТОВІ ЗАВДАННЯ</h1>
+        <h2>з дисципліни «Українська мова за професійним спрямуванням»<br>Тема: Комплексна перевірка мовних норм, лексики та ділової комунікації</h2>
+    </div>
+
+    <div class="student-info">
+        <div>
+            <label for="studentName">ПІБ студента:</label>
+            <input type="text" id="studentName" placeholder="Введіть ваше прізвище та ім'я">
+        </div>
+        <div>
+            <label for="studentGroup">Група:</label>
+            <input type="text" id="studentGroup" placeholder="Введіть групу">
+        </div>
+    </div>
+
+    <form id="quizForm">
+        <!-- Запитання 1 -->
+        <div class="question">
+            <p>1. До якої мовної сім'ї та групи належить українська мова?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="А"> А) Індоєвропейської сім'ї, слов'янської групи.</label>
+                <label><input type="radio" name="q1" value="Б"> Б) Індоєвропейської сім'ї, романської групи.</label>
+                <label><input type="radio" name="q1" value="В"> В) Картвельської сім'ї, балтійської групи.</label>
+                <label><input type="radio" name="q1" value="Г"> Г) Сино-тибетської сім'ї, кельтської групи.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 2 -->
+        <div class="question">
+            <p>2. Яка писемна пам'ятка XI століття містить найдавніші фонетичні та лексичні риси живої української мови?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="А"> А) Пересопницьке Євангеліє.</label>
+                <label><input type="radio" name="q2" value="Б"> Б) Ізборник Святослава 1073 року.</label>
+                <label><input type="radio" name="q2" value="В"> В) «Енеїда» Івана Котляревського.</label>
+                <label><input type="radio" name="q2" value="Г"> Г) Літопис Самовидця.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 3 -->
+        <div class="question">
+            <p>3. Який підстиль офіційно-ділового стилю обслуговує сферу міждержавних відносин, конвенцій та угод?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="А"> А) Законодавчий підстиль.</label>
+                <label><input type="radio" name="q3" value="Б"> Б) Адміністративно-канцелярський підстиль.</label>
+                <label><input type="radio" name="q3" value="В"> В) Дипломатичний підстиль.</label>
+                <label><input type="radio" name="q3" value="Г"> Г) Юридичний підстиль.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 4 -->
+        <div class="question">
+            <p>4. Яка з наведених ознак є визначальною для текстів власне наукового підстилю?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="А"> А) Емоційна експресивність та образність.</label>
+                <label><input type="radio" name="q4" value="Б"> Б) Понятійна точність, об'єктивність та логічність.</label>
+                <label><input type="radio" name="q4" value="В"> В) Переважання розмовно-побутової лексики.</label>
+                <label><input type="radio" name="q4" value="Г"> Г) Використання окличних і спонукальних конструкцій.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 5 -->
+        <div class="question">
+            <p>5. Відповідно до чинного Українського правопису (2019), як пишуться слова з іншомовними компонентами міні-, макро-, преміум-?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="А"> А) Завжди разом.</label>
+                <label><input type="radio" name="q5" value="Б"> Б) Завжди через дефіс.</label>
+                <label><input type="radio" name="q5" value="В"> В) Окремо від основного слова.</label>
+                <label><input type="radio" name="q5" value="Г"> Г) Через дефіс перед голосними, разом — перед приголосними.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 6 -->
+        <div class="question">
+            <p>6. Який тип мовної норми регулює правила літературної вимови звуків та наголошування слів?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="А"> А) Орфографічна та пунктуаційна норми.</label>
+                <label><input type="radio" name="q6" value="Б"> Б) Орфоепічна та акцентуаційна норми.</label>
+                <label><input type="radio" name="q6" value="В"> В) Лексична та фразеологічна норми.</label>
+                <label><input type="radio" name="q6" value="Г"> Г) Морфологічна та синтаксична норми.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 7 -->
+        <div class="question">
+            <p>7. Яка форма колективного обговорення передбачає суворе дотримання регламенту, наявність головуючого та ухвалення резолюції?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="А"> А) Світська бесіда.</label>
+                <label><input type="radio" name="q7" value="Б"> Б) Неформальна дискусія.</label>
+                <label><input type="radio" name="q7" value="В"> В) Ділова нарада.</label>
+                <label><input type="radio" name="q7" value="Г"> Г) Вільне інтерв'ю.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 8 -->
+        <div class="question">
+            <p>8. Що є головною вимогою під час першого етапу проведення методу «мозкового штурму»?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="А"> А) Вільне генерування максимальної кількості ідей.</label>
+                <label><input type="radio" name="q8" value="Б"> Б) Негайна критика та відсіювання слабких пропозицій.</label>
+                <label><input type="radio" name="q8" value="В"> В) Покрокове складання фінансового кошторису.</label>
+                <label><input type="radio" name="q8" value="Г"> Г) Затвердження остаточного протоколу засідання.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 9 -->
+        <div class="question">
+            <p>9. Яка формула звертання є граматично правильною в сучасному офіційно-діловому листуванні?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="А"> А) Шановний пан директор!</label>
+                <label><input type="radio" name="q9" value="Б"> Б) Шановний пане директор!</label>
+                <label><input type="radio" name="q9" value="В"> В) Шановний пане директоре!</label>
+                <label><input type="radio" name="q9" value="Г"> Г) Шановному пану директору!</label>
+            </div>
+        </div>
+
+        <!-- Запитання 10 -->
+        <div class="question">
+            <p>10. Який етикетний вислів для висловлення подяки відповідає лексичним і стилістичним нормам української мови?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="А"> А) Дякую вас за співпрацю.</label>
+                <label><input type="radio" name="q10" value="Б"> Б) Щиро дякую вам за співпрацю.</label>
+                <label><input type="radio" name="q10" value="В"> В) Велике дякую за вашу співпрацю.</label>
+                <label><input type="radio" name="q10" value="Г"> Г) Прийміть нашу щиру подяку за співпрацювання.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 11 -->
+        <div class="question">
+            <p>11. У якому рядку подано пару паронімів, значення яких важливо розрізняти в діловому мовленні?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="А"> А) Експорт – імпорт.</label>
+                <label><input type="radio" name="q11" value="Б"> Б) Абонент – клієнт.</label>
+                <label><input type="radio" name="q11" value="В"> В) Адресат – адресант.</label>
+                <label><input type="radio" name="q11" value="Г"> Г) Договір – контракт.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 12 -->
+        <div class="question">
+            <p>12. Яке з наведених словосполучень НЕ містить лексичної надлишковості (плеоназму)?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="А"> А) Вільна вакансія.</label>
+                <label><input type="radio" name="q12" value="Б"> Б) Превентивні заходи.</label>
+                <label><input type="radio" name="q12" value="В"> В) Головний лейтмотив.</label>
+                <label><input type="radio" name="q12" value="Г"> Г) Перший дебют.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 13 -->
+        <div class="question">
+            <p>13. Яким українським прикметником найточніше замінити слово «ідентичний» у фаховому тексті?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="А"> А) Схожий.</label>
+                <label><input type="radio" name="q13" value="Б"> Б) Аналогічний.</label>
+                <label><input type="radio" name="q13" value="В"> В) Паралельний.</label>
+                <label><input type="radio" name="q13" value="Г"> Г) Тотожний.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 14 -->
+        <div class="question">
+            <p>14. Який фразеологізм означає «викликати занепокоєння, тривогу або сумніви в колективі»?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="А"> А) Вносити сум'яття в ряди.</label>
+                <label><input type="radio" name="q14" value="Б"> Б) Тримати руку на пульсі.</label>
+                <label><input type="radio" name="q14" value="В"> В) Розставити крапки над «і».</label>
+                <label><input type="radio" name="q14" value="Г"> Г) Вивести на чисту воду.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 15 -->
+        <div class="question">
+            <p>15. Що означає фразеологізм «камінь спотикання» в контексті ділових переговорів?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="А"> А) Серйозна перешкода у вирішенні питання.</label>
+                <label><input type="radio" name="q15" value="Б"> Б) Надійна основа для майбутньої угоди.</label>
+                <label><input type="radio" name="q15" value="В"> В) Остаточне підписання контракту.</label>
+                <label><input type="radio" name="q15" value="Г"> Г) Несподівана фінансова вигода.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 16 -->
+        <div class="question">
+            <p>16. У якому рядку всі іменники чоловічого роду II відміни в родовому відмінку однини мають закінчення -у (-ю)?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="А"> А) Договір, документ, наказ.</label>
+                <label><input type="radio" name="q16" value="Б"> Б) Прогрес, аналіз, контроль.</label>
+                <label><input type="radio" name="q16" value="В"> В) Відділ, кабінет, штамп.</label>
+                <label><input type="radio" name="q16" value="Г"> Г) Працівник, керівник, фахівець.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 17 -->
+        <div class="question">
+            <p>17. Який варіант поєднання кількісного числівника з іменником відповідає граматичним нормам української мови?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="А"> А) Три з половиною гривень.</label>
+                <label><input type="radio" name="q17" value="Б"> Б) Три з половиною гривні.</label>
+                <label><input type="radio" name="q17" value="В"> В) Півтора місяців.</label>
+                <label><input type="radio" name="q17" value="Г"> Г) Два з половиною відсотків.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 18 -->
+        <div class="question">
+            <p>18. Яка синтаксична конструкція називається «розщепленим присудком» і є характерною для канцелярського стилю?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="А"> А) Надавати допомогу (замість допомагати).</label>
+                <label><input type="radio" name="q18" value="Б"> Б) Швидко та якісно виконувати завдання.</label>
+                <label><input type="radio" name="q18" value="В"> В) Затвердити річний план роботи.</label>
+                <label><input type="radio" name="q18" value="Г"> Г) Підписати договір про співпрацю.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 19 -->
+        <div class="question">
+            <p>19. Який варіант побудови речення є найбільш природним і нормативним для сучасної української ділової мови?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="А"> А) Заява розглядається керівником відділу.</label>
+                <label><input type="radio" name="q19" value="Б"> Б) Керівником відділу було розглянуто заяву.</label>
+                <label><input type="radio" name="q19" value="В"> В) Керівник відділу розглядає заяву.</label>
+                <label><input type="radio" name="q19" value="Г"> Г) Має місце розгляд заяви керівником відділу.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 20 -->
+        <div class="question">
+            <p>20. Який реквізит є обов'язковим для надання службовому документу юридичної сили?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="А"> А) Підпис уповноваженої посадової особи.</label>
+                <label><input type="radio" name="q20" value="Б"> Б) Резолюція виконавця на берегах.</label>
+                <label><input type="radio" name="q20" value="В"> В) Позначка про взяття на контроль.</label>
+                <label><input type="radio" name="q20" value="Г"> Г) Кольоровий логотип установи.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 21 -->
+        <div class="question">
+            <p>21. Як класифікуються службові документи за місцем їхнього виникнення?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="А"> А) Індивідуальні та типові.</label>
+                <label><input type="radio" name="q21" value="Б"> Б) Внутрішні та зовнішні.</label>
+                <label><input type="radio" name="q21" value="В"> В) Прості та складні.</label>
+                <label><input type="radio" name="q21" value="Г"> Г) Секретні та відкриті.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 22 -->
+        <div class="question">
+            <p>22. Який із наведених документів належить до групи документації щодо особового складу (кадрової)?</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="А"> А) Протокол зборів.</label>
+                <label><input type="radio" name="q22" value="Б"> Б) Доповідна записка.</label>
+                <label><input type="radio" name="q22" value="В"> В) Автобіографія.</label>
+                <label><input type="radio" name="q22" value="Г"> Г) Акт ревізії.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 23 -->
+        <div class="question">
+            <p>23. У якій послідовності подаються відомості про освіту та досвід роботи при укладанні сучасного резюме?</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="А"> А) У зворотному хронологічному порядку.</label>
+                <label><input type="radio" name="q23" value="Б"> Б) У прямому хронологічному порядку (від найдавнішого).</label>
+                <label><input type="radio" name="q23" value="В"> В) В алфавітному порядку за назвами установ.</label>
+                <label><input type="radio" name="q23" value="Г"> Г) За рівнем важливості на розсуд укладача.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 24 -->
+        <div class="question">
+            <p>24. Яке основне призначення супровідного листа в діловому листуванні?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="А"> А) Висловлення офіційного протесту щодо умов угоди.</label>
+                <label><input type="radio" name="q24" value="Б"> Б) Повідомлення адресата про надсилання пакета документів.</label>
+                <label><input type="radio" name="q24" value="В"> В) Нагадування про прострочення оплати рахунку.</label>
+                <label><input type="radio" name="q24" value="Г"> Г) Запрошення партнерів на урочистий захід.</label>
+            </div>
+        </div>
+
+        <!-- Запитання 25 -->
+        <div class="question">
+            <p>25. Який специфічний елемент є обов'язковим у тексті гарантійного листа?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="А"> А) Чітке зобов'язання та банківські реквізити.</label>
+                <label><input type="radio" name="q25" value="Б"> Б) Детальна біографія керівника підприємства.</label>
+                <label><input type="radio" name="q25" value="В"> В) Перелік усіх попередніх ділових партнерів.</label>
+                <label><input type="radio" name="q25" value="Г"> Г) Художній опис переваг продукції.</label>
+            </div>
+        </div>
+        <button type="button" class="btn" id="submitBtn" onclick="checkTest()">Завершити тест та надіслати на перевірку</button>
+    </form>
+
+    <div id="result"></div>
+    <div id="sendStatus"></div>
+</div>
+</div>
+
+<script>
+    // =====================================================
+    // НАЛАШТУВАННЯ ТЕСТУ
+    // =====================================================
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8eBPxfBN18vXv5rb8elcMQ6TJ82UNzk7Q19TTOSPHN5Kn8_c1TuKAqBLaUZ2Dm1dlyg/exec';
+    const TEST_THEME = 'Комплексна перевірка мовних норм, лексики та ділової комунікації';
+    const TEST_ID = 'test-3';
+
+    // Захист від копіювання
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('copy', event => event.preventDefault());
+
+    // =====================================================
+    // ПЕРЕВІРКА СТАТУСУ ПРИ ЗАВАНТАЖЕННІ
+    // =====================================================
+    window.addEventListener('load', function() {
+        fetch(`${GOOGLE_SCRIPT_URL}?test=${TEST_ID}`)
+            .then(r => r.json())
+            .then(data => {
+                if (!data.enabled) {
+                    document.getElementById('overlayContent').innerHTML = `
+                        <div class="overlay-disabled">
+                            <div class="icon">&#x1F512;</div>
+                            <div class="overlay-logo">&#x412;&#x422;&#x415;&#x406;</div>
+                            <h2>&#x422;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F; &#x43D;&#x435;&#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F;&#x43D;&#x435;</h2>
+                            <p>${data.message || '&#x412;&#x438;&#x43A;&#x43B;&#x430;&#x434;&#x430;&#x447; &#x442;&#x438;&#x43C;&#x447;&#x430;&#x441;&#x43E;&#x432;&#x43E; &#x437;&#x430;&#x43A;&#x440;&#x438;&#x432; &#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F; &#x434;&#x43E; &#x442;&#x435;&#x441;&#x442;&#x443;&#x432;&#x430;&#x43D;&#x43D;&#x44F;.'}</p>
+                            <div style="margin-top: 24px;">
+                                <a href="../index.html" style="color: #1a4b8a; text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 16px; background: rgba(26,75,138,0.05); border-radius: 8px;">← Повернутись на головну</a>
+                            </div>
+                        </div>`;
+                } else {
+                    showCodeForm();
+                }
+            })
+            .catch(() => { showCodeForm(); });
+    });
+
+    function showCodeForm() {
+        document.getElementById('overlayContent').innerHTML = [
+            '<div class="overlay-logo">ВТЕІ</div>',
+            '<h2>🔑 Введіть код доступу</h2>',
+            '<p>Отримайте код у вашого викладача перед початком тестування.</p>',
+            '<input type="text" id="codeInput" class="overlay-input" placeholder="&#x2022; &#x2022; &#x2022; &#x2022; &#x2022; &#x2022;" maxlength="12" autocomplete="off" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key===\'Enter\') submitCode()">',
+            '<button class="overlay-btn" id="codeBtn" onclick="submitCode()">Розпочати тест →</button>',
+            '<div class="overlay-error" id="codeError"></div>',
+            '<div style="margin-top: 16px;">',
+            '    <a href="../index.html" style="color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">← Повернутись на головну</a>',
+            '</div>'
+        ].join('');
+        setTimeout(function() {
+            var inp = document.getElementById('codeInput');
+            if (inp) inp.focus();
+        }, 100);
+    }
+
+    function submitCode() {
+        var input = document.getElementById('codeInput');
+        var btn = document.getElementById('codeBtn');
+        var errorEl = document.getElementById('codeError');
+        var code = input.value.trim().toUpperCase();
+
+        if (!code) { shakeInput(); errorEl.textContent = 'Будь ласка, введіть код доступу.'; return; }
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Перевіряємо...';
+        errorEl.textContent = '';
+
+        fetch(GOOGLE_SCRIPT_URL + '?test=' + TEST_ID + '&code=' + encodeURIComponent(code))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.codeValid) {
+                    var overlay = document.getElementById('overlay');
+                    overlay.classList.add('hidden');
+                    setTimeout(function() { overlay.style.display = 'none'; }, 500);
+                } else {
+                    shakeInput();
+                    errorEl.textContent = data.message || '❌ Невірний код. Спробуйте ще раз.';
+                    btn.disabled = false;
+                    btn.textContent = 'Розпочати тест →';
+                }
+            })
+            .catch(function() {
+                errorEl.textContent = '⚠️ Помилка з\'єднання. Зверніться до викладача.';
+                btn.disabled = false;
+                btn.textContent = 'Розпочати тест →';
+            });
+    }
+
+    function shakeInput() {
+        var input = document.getElementById('codeInput');
+        if (!input) return;
+        input.classList.remove('error');
+        void input.offsetWidth;
+        input.classList.add('error');
+        setTimeout(function() { input.classList.remove('error'); }, 500);
+    }
+
+    // Очищення помилок при введенні
+    document.getElementById('studentName').addEventListener('input', function() {
+        this.classList.remove('input-error');
+        var hint = this.parentElement.querySelector('.validation-hint');
+        if (hint) hint.remove();
+    });
+    document.getElementById('studentGroup').addEventListener('input', function() {
+        this.classList.remove('input-error');
+        var hint = this.parentElement.querySelector('.validation-hint');
+        if (hint) hint.remove();
+    });
+
+    // Оновлені відповіді
+    const correctAnswers = {
+        q1: "А",
+        q2: "Б",
+        q3: "В",
+        q4: "Б",
+        q5: "А",
+        q6: "Б",
+        q7: "В",
+        q8: "А",
+        q9: "В",
+        q10: "Б",
+        q11: "В",
+        q12: "Б",
+        q13: "Г",
+        q14: "А",
+        q15: "А",
+        q16: "Б",
+        q17: "Б",
+        q18: "А",
+        q19: "В",
+        q20: "А",
+        q21: "Б",
+        q22: "В",
+        q23: "А",
+        q24: "Б",
+        q25: "А"
+    };
+
+    let testSubmitted = false;
+
+    function checkTest() {
+        if (testSubmitted) return;
+
+        // Валідація ПІБ та групи
+        const nameInput = document.getElementById('studentName');
+        const groupInput = document.getElementById('studentGroup');
+        const nameVal = nameInput.value.trim();
+        const groupVal = groupInput.value.trim();
+        let hasError = false;
+
+        // Прибрати попередні помилки
+        nameInput.classList.remove('input-error');
+        groupInput.classList.remove('input-error');
+        document.querySelectorAll('.validation-hint').forEach(el => el.remove());
+
+        if (!nameVal) {
+            nameInput.classList.add('input-error');
+            const hint = document.createElement('div');
+            hint.className = 'validation-hint visible';
+            hint.textContent = '⚠️ Будь ласка, введіть ваше прізвище та ім\'я';
+            nameInput.parentElement.appendChild(hint);
+            hasError = true;
+        }
+        if (!groupVal) {
+            groupInput.classList.add('input-error');
+            const hint = document.createElement('div');
+            hint.className = 'validation-hint visible';
+            hint.textContent = '⚠️ Будь ласка, введіть вашу групу';
+            groupInput.parentElement.appendChild(hint);
+            hasError = true;
+        }
+        if (hasError) {
+            const firstError = document.querySelector('.input-error');
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+            return;
+        }
+
+        const form = document.getElementById('quizForm');
+        const formData = new FormData(form);
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        // Збір відповідей студента у зручному форматі (1-А, 2-Б, і т.д.)
+        const studentAnswersArray = [];
+        for (let q of Object.keys(correctAnswers)) {
+            let num = q.replace('q', ''); 
+            let ans = formData.get(q) || '—';
+            studentAnswersArray.push(num + '-' + ans);
+        }
+        const formattedAnswers = studentAnswersArray.join(', ');
+
+        for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
+            const userAnswer = formData.get(question);
+            
+            if (userAnswer === correctAnswer) {
+                score++;
+            }
+        }
+
+        const name = nameVal;
+        const group = groupVal;
+        const statusDiv = document.getElementById('sendStatus');
+        const resultDiv = document.getElementById('result');
+        
+        let gradeText = "";
+        if (score >= 23) gradeText = "Відмінно!";
+        else if (score >= 18) gradeText = "Добре!";
+        else if (score >= 13) gradeText = "Задовільно.";
+        else gradeText = "Потребує доопрацювання.";
+
+        // Заблокувати кнопку та зафіксувати відправку
+        testSubmitted = true;
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Тест завершено';
+
+        resultDiv.innerHTML = `
+            <b>${name} (${group})</b>
+            Тема: ${TEST_THEME}
+        `;
+        resultDiv.style.display = 'block';
+
+        // Відправка у Google Таблицю
+        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            statusDiv.innerHTML = '<span class="status-sending">⏳ Зберігаємо результати...</span>';
+
+            const payload = JSON.stringify({
+                testId: TEST_ID,
+                theme: TEST_THEME,
+                name: name,
+                group: group,
+                score: score,
+                total: total,
+                grade: gradeText,
+                answers: formattedAnswers
+            });
+
+            // Відправка як звичайний текст, щоб обійти блокування CORS у браузері
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: payload
+            })
+            .then(() => {
+                statusDiv.innerHTML = '<span class="status-ok">✅ Дякуємо, що пройшли тест! Ваші дані успішно надіслано.</span>';
+            })
+            .catch((err) => {
+                statusDiv.innerHTML = '<span class="status-error">⚠️ Помилка збереження. Ваш результат: ' + score + '/' + total + '</span>';
+                console.error('Помилка відправки:', err);
+            });
+        }
+
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
